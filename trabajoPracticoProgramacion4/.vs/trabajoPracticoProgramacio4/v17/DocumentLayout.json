@@ -1,0 +1,87 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\ivan_\\Desktop\\Programacion 4\\trabajoPracticoProgramacio4\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacio4.csproj|c:\\users\\ivan_\\desktop\\programacion 4\\trabajopracticoprogramacio4\\trabajopracticoprogramacio4\\models\\usermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacio4.csproj|solutionrelative:trabajopracticoprogramacio4\\models\\usermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacio4.csproj|c:\\users\\ivan_\\desktop\\programacion 4\\trabajopracticoprogramacio4\\trabajopracticoprogramacio4\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacio4.csproj|solutionrelative:trabajopracticoprogramacio4\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj|c:\\users\\ivan_\\desktop\\programacion 4\\trabajopracticoprogramacio4\\trabajopracticoprogramacio4\\trabajopracticoprogramacion4.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj|solutionrelative:trabajopracticoprogramacio4\\trabajopracticoprogramacion4.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserModel.cs",
+              "DocumentMoniker": "C:\\Users\\ivan_\\Desktop\\Programacion 4\\trabajoPracticoProgramacio4\\trabajoPracticoProgramacio4\\Models\\UserModel.cs",
+              "RelativeDocumentMoniker": "trabajoPracticoProgramacio4\\Models\\UserModel.cs",
+              "ToolTip": "C:\\Users\\ivan_\\Desktop\\Programacion 4\\trabajoPracticoProgramacio4\\trabajoPracticoProgramacio4\\Models\\UserModel.cs",
+              "RelativeToolTip": "trabajoPracticoProgramacio4\\Models\\UserModel.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAAAQAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-10T01:00:29.349Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\ivan_\\Desktop\\Programacion 4\\trabajoPracticoProgramacio4\\trabajoPracticoProgramacio4\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "trabajoPracticoProgramacio4\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\ivan_\\Desktop\\Programacion 4\\trabajoPracticoProgramacio4\\trabajoPracticoProgramacio4\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "trabajoPracticoProgramacio4\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-10T00:59:30.936Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "trabajoPracticoProgramacion4.csproj",
+              "DocumentMoniker": "C:\\Users\\ivan_\\Desktop\\Programacion 4\\trabajoPracticoProgramacio4\\trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj",
+              "RelativeDocumentMoniker": "trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj",
+              "ToolTip": "C:\\Users\\ivan_\\Desktop\\Programacion 4\\trabajoPracticoProgramacio4\\trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj",
+              "RelativeToolTip": "trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-06-10T00:58:12.436Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
