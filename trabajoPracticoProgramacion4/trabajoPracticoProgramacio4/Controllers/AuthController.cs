@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
+using System.Net;
 using System.Security.Claims;
 using System.Text;
 using trabajoPracticoProgramacion4.Context;
@@ -16,12 +17,12 @@ namespace trabajoPracticoProgramacio4.Controllers
     public class AuthController : ControllerBase
     {
         private readonly AppDbContext _context;
-        private readonly IConfiguration _config; 
+        private readonly IConfiguration _config; //
 
-        public AuthController(AppDbContext context, IConfiguration config)
+        public AuthController(AppDbContext context, IConfiguration config) //
         {
             _context = context;
-            _config = config;
+            _config = config;//
         }
 
         [HttpPost] // LOGIN 
@@ -78,10 +79,47 @@ namespace trabajoPracticoProgramacio4.Controllers
             }
         }
 
-        
+    [HttpPost("register")] // REGISTRO DE USUARIO
+        public async Task<IActionResult> Register(RegistroUsuarioDTO userDTO)
+        {
+            try
+            {
+                var usuarioExistente = await _context.Usuarios
+                    .FirstOrDefaultAsync(u => u.User_Name == registroUsuarioDTO.User_Name);
+                if (usuarioExistente != null)
+                {
+                    return BadRequest("El nombre de usuario ya está en uso.");
+                }
+                var nuevoUsuario = new UserModel
+                {
+                    User_Name = userDTO.User_Name,
+                    Password = BCrypt.Net.BCrypt.HashPassword(userDTO.Password), // Encriptar la contraseña
+    
+                    Nombre = userDTO.Nombre,
+                    Apellido = userDTO.Apellido,
+                    Dns = userDTO.Dni,
+                    Email = userDTO.Email,
+                    Estado = true,
+                    Id_Rol = 2 // 2 por defecto - Rol de Cliente
+                };
 
-
+                // Agrega el nuevo usuario a la base de datos
+                _context.Usuarios.Add(nuevoUsuario);
+                await _context.SaveChangesAsync();
+                return Ok("Usuario registrado correctamente.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new
+                {
+                    Mensaje = "Error al registrar el usuario",
+                    Error = ex.Message
+                });
+            }
         }
+
+
+    }
 
 
 
