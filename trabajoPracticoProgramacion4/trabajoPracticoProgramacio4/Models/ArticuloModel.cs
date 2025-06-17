@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace trabajoPracticoProgramacion4.Models
 {
-    [Tabel("Articulos")]
+    [Table ("Articulos")]
     public class ArticuloModel
     {
         [Key]
