@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using trabajoPracticoProgramacio4.Models;
 
 namespace trabajoPracticoProgramacion4.Models
 {

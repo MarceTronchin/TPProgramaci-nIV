@@ -3,11 +3,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using trabajoPracticoProgramacion4.Context;
+using trabajoPracticoProgramacion4.Interfaz;
+using trabajoPracticoProgramacion4.Servicies;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // DATABASE 
 
+builder.Services.AddScoped<UsuarioInterfaz, UsuarioService>();
 
 string connectionString = builder.Configuration.GetConnectionString("conexion");
 

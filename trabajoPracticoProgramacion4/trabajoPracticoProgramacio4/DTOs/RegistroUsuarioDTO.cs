@@ -5,7 +5,7 @@ public class RegistroUsuarioDTO
     public string Password { get; set; }
     public string Nombre { get; set; }
     public string Apellido { get; set; }
-    public string Dni { get; set; }
+    public string dni { get; set; }
     public string Email { get; set; }
 
 

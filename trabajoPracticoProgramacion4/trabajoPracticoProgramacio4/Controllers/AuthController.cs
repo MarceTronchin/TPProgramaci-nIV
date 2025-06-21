@@ -2,11 +2,13 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
-using System.Net;
 using System.Security.Claims;
 using System.Text;
+using trabajoPracticoProgramacio4.Models;
 using trabajoPracticoProgramacion4.Context;
 using trabajoPracticoProgramacion4.Models;
+using Org.BouncyCastle.Crypto.Generators;
+
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -22,7 +24,7 @@ namespace trabajoPracticoProgramacio4.Controllers
         public AuthController(AppDbContext context, IConfiguration config) //
         {
             _context = context;
-            _config = config;//
+            _config = config; 
         }
 
         [HttpPost] // LOGIN 
@@ -66,26 +68,27 @@ namespace trabajoPracticoProgramacio4.Controllers
                     Vencimiento = DateTime.Now.AddHours(1),
                 });
 
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 return BadRequest(new
                 {
                     Mensaje = "Error al loguearse",
-                    Error = ex.Message  
+                    Error = ex.Message
                 });
             }
-               
 
-            }
+
         }
 
-    [HttpPost("register")] // REGISTRO DE USUARIO
+
+        [HttpPost("register")] // REGISTRO DE USUARIO
         public async Task<IActionResult> Register(RegistroUsuarioDTO userDTO)
         {
             try
             {
                 var usuarioExistente = await _context.Usuarios
-                    .FirstOrDefaultAsync(u => u.User_Name == registroUsuarioDTO.User_Name);
+                    .FirstOrDefaultAsync(u => u.User_Name == userDTO.User_Name);
                 if (usuarioExistente != null)
                 {
                     return BadRequest("El nombre de usuario ya está en uso.");
@@ -94,10 +97,10 @@ namespace trabajoPracticoProgramacio4.Controllers
                 {
                     User_Name = userDTO.User_Name,
                     Password = BCrypt.Net.BCrypt.HashPassword(userDTO.Password), // Encriptar la contraseña
-    
+
                     Nombre = userDTO.Nombre,
                     Apellido = userDTO.Apellido,
-                    Dns = userDTO.Dni,
+                    dni = userDTO.dni,
                     Email = userDTO.Email,
                     Estado = true,
                     Id_Rol = 2 // 2 por defecto - Rol de Cliente
@@ -117,15 +120,5 @@ namespace trabajoPracticoProgramacio4.Controllers
                 });
             }
         }
-
-
     }
-
-
-
-
-
-
-
-    
-
+}

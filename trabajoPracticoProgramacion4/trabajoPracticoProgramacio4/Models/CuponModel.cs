@@ -8,6 +8,10 @@ namespace trabajoPracticoProgramacio4.Models
     public class CuponModel
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)] // Indica que la DB genera el valor (autoincremental)
+        [Column("Id_Cupon")] // Mapea a la columna Id_Cupon en la base de datos
+        public int Id_Cupon { get; set; }
+
         public string NroCupon { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
@@ -21,7 +25,12 @@ namespace trabajoPracticoProgramacio4.Models
         #region Navegacion 
         [ForeignKey("Id_Tipo_Cupon")]
         public virtual TipoCuponModel? TipoCupon { get; set; }
-        #endregion 
 
+        // Se agrega propiedades de navegación para Cupones_Clientes y Cupones_Detalle
+        // Un cupón puede ser asignado a muchos clientes y tener muchos artículos en detalle
+        public ICollection<CuponClienteModel> CuponesClientes { get; set; } = new List<CuponClienteModel>();
+        public ICollection<CuponDetalle> CuponesDetalles { get; set; } = new List<CuponDetalle>();
+
+        #endregion
     }
 }
