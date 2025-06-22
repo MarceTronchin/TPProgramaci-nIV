@@ -10,6 +10,8 @@ using trabajoPracticoProgramacion4.Models;
 using Org.BouncyCastle.Crypto.Generators;
 using trabajoPracticoProgramacion4.Interfaz;
 using trabajoPracticoProgramacion4.Servicies;
+using Microsoft.AspNetCore.Authorization;
+using trabajoPracticoProgramacion4.DTOs;
 
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -29,6 +31,32 @@ namespace trabajoPracticoProgramacio4.Controllers
             _config = config;
             _authService = authService;
         }
+
+        [HttpPost("login")] // Ruta: /api/Auth/login
+        [AllowAnonymous] // Indica que este endpoint no requiere autenticación
+        public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
+        {
+            // Verifica las validaciones del DTO (ej. si User_Name y Password son Required)
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState); // Devuelve los errores de validación
+            }
+
+            try
+            {
+                // Llama al servicio de autenticación para intentar el login y obtener el token
+                string token = await _authService.Login(loginDto);
+                // Si todo es exitoso, devuelve un HTTP 200 OK con el token
+                return Ok(new { Token = token });
+            }
+            catch (Exception ex)
+            {
+                // Si el login falla (ej. usuario/contraseña incorrectos), el servicio lanzará una excepción.
+                // Devolvemos un 401 Unauthorized por seguridad (no damos detalles específicos del error).
+                return Unauthorized(new { Message = ex.Message });
+            }
+        }
+
 
         [HttpPost] // LOGIN 
 

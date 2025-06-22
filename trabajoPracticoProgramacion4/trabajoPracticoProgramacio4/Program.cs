@@ -11,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 // DATABASE 
 
 builder.Services.AddScoped<UsuarioInterfaz, UsuarioService>();
-
+builder.Services.AddScoped<IAuthService, AuthService>();
 string connectionString = builder.Configuration.GetConnectionString("conexion");
 
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));

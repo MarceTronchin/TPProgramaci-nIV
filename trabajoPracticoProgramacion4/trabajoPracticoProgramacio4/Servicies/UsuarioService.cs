@@ -25,7 +25,7 @@ namespace trabajoPracticoProgramacion4.Servicies
         public async Task<List<UsuarioResponseDto>> GetTodosUsuarios()
         {
             var usuarios = await _context.Usuarios
-                                         .Include(u => u.Rol) // Esto es importante para el RolNombre
+                                         .Include(u => u.Rol) 
                                          .ToListAsync();
             return usuarios.Select(u => new UsuarioResponseDto
             {
@@ -33,12 +33,11 @@ namespace trabajoPracticoProgramacion4.Servicies
                 User_Name = u.User_Name,
                 Nombre = u.Nombre,
                 Apellido = u.Apellido,
-                Dni = u.dni, // Asegúrate de que el mapeo de 'dni' sea correcto
+                Dni = u.dni, 
                 Email = u.Email,
-                // Telefono ya lo eliminamos del DTO
                 Estado = u.Estado,
                 Id_Rol = u.Id_Rol,
-                RolNombre = u.Rol?.Nombre // Obtiene el nombre del rol
+                RolNombre = u.Rol?.Nombre 
             }).ToList();
 
         }
@@ -47,7 +46,7 @@ namespace trabajoPracticoProgramacion4.Servicies
         public async Task<UsuarioResponseDto> GetUsuariosPorId(int id)
         {
             var usuario = await _context.Usuarios
-                                        .Include(u => u.Rol) // Esto es importante para el RolNombre
+                                        .Include(u => u.Rol) 
                                         .FirstOrDefaultAsync(u => u.Id_Usuario == id);
 
             if (usuario == null)
@@ -68,67 +67,49 @@ namespace trabajoPracticoProgramacion4.Servicies
             };
         }
 
-        public Task PostUsuarios(DtoUsuario usuario)
+        public async Task<UsuarioResponseDto> PostUsuarios(DtoUsuario usuario)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task PutUsuario(int id, DtoUsuario usuarioDto)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<UsuarioResponseDto> RegisterUserAsync(DtoUsuario registroDto) // Usamos DtoUsuario
-        {
-            // --- 1. Validar Unicidad de User_Name y Email ---
-            // Buscamos si ya existe un usuario con el mismo User_Name o Email.
+       
             var existingUser = await _context.Usuarios
-                .FirstOrDefaultAsync(u => u.User_Name == registroDto.User_Name || u.Email == registroDto.Email);
+                .FirstOrDefaultAsync(u => u.User_Name == usuario.User_Name || u.Email == usuario.Email);
 
             if (existingUser != null)
             {
-                if (existingUser.User_Name == registroDto.User_Name)
+                if (existingUser.User_Name == usuario.User_Name)
                     throw new Exception("El nombre de usuario ya está registrado.");
-                if (existingUser.Email == registroDto.Email)
+                if (existingUser.Email == usuario.Email)
                     throw new Exception("El correo electrónico ya está registrado.");
             }
 
-            // --- 2. Hashear la Contraseña ---
-            // 🔴 ¡IMPORTANTE! Aquí es donde hasheamos la contraseña antes de guardarla.
-            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(registroDto.Password);
+            // Contraseña HASHEADA
+            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(usuario.Password);
 
-            // --- 3. Asignar el Rol por Defecto ("Cliente") ---
-            // La consigna dice que cualquier persona que se registre debe tener el rol "Cliente".
-            // Buscamos el ID de este rol en la base de datos.
+          
             var clienteRol = await _context.Roles.FirstOrDefaultAsync(r => r.Nombre == "Cliente");
             if (clienteRol == null)
             {
-                // Si el rol 'Cliente' no existe en la DB, es un error de configuración.
                 throw new Exception("Error de configuración: El rol 'Cliente' no se encontró en la base de datos. Asegúrate de crearlo.");
             }
 
-            // --- 4. Crear la Entidad UserModel para guardar en la DB ---
+  
             var newUser = new UserModel
             {
-                User_Name = registroDto.User_Name,
-                Password = hashedPassword, // <-- Guardamos la contraseña HASHEADA
-                Nombre = registroDto.Nombre,
-                Apellido = registroDto.Apellido,
-                dni = registroDto.dni,     // <-- Asegúrate de que tu modelo tiene 'dni' en minúscula
-                Email = registroDto.Email,
-                // Telefono ya lo eliminamos
-                Estado = true,             // <-- Por defecto, el usuario está activo al registrarse
-                Id_Rol = clienteRol.Id_Rol // <-- Asignamos el ID del rol "Cliente"
+                User_Name = usuario.User_Name,
+                Password = hashedPassword, // Contraseña HASHEADA
+                Nombre = usuario.Nombre,
+                Apellido = usuario.Apellido,
+                dni = usuario.dni,
+                Email = usuario.Email,
+                Estado = true,
+                Id_Rol = clienteRol.Id_Rol
             };
 
             _context.Usuarios.Add(newUser);
             await _context.SaveChangesAsync();
 
-            // Opcional: Recargar el usuario con la información del rol para el DTO de respuesta
-            // Esto asegura que `newUser.Rol` no sea nulo al mapear a `RolNombre`.
             await _context.Entry(newUser).Reference(u => u.Rol).LoadAsync();
 
-            // --- 5. Mapear y Devolver el UsuarioResponseDto del nuevo usuario ---
+     
             return new UsuarioResponseDto
             {
                 Id_Usuario = newUser.Id_Usuario,
@@ -143,6 +124,117 @@ namespace trabajoPracticoProgramacion4.Servicies
             };
         }
 
+        
+
+        public async Task PutUsuario(int id, DtoUsuario usuarioDto)
+        {
+            var userToUpdate = await _context.Usuarios.FindAsync(id);
+
+            if (userToUpdate == null)
+            {
+                throw new Exception($"Usuario con ID {id} no encontrado para actualizar.");
+            }
+
+            
+            if (usuarioDto.User_Name != userToUpdate.User_Name)
+            {
+                if (await _context.Usuarios.AnyAsync(u => u.User_Name == usuarioDto.User_Name && u.Id_Usuario != id))
+                {
+                    throw new Exception("El nuevo nombre de usuario ya está en uso.");
+                }
+                userToUpdate.User_Name = usuarioDto.User_Name;
+            }
+
+            if (usuarioDto.Email != userToUpdate.Email)
+            {
+                if (await _context.Usuarios.AnyAsync(u => u.Email == usuarioDto.Email && u.Id_Usuario != id))
+                {
+                    throw new Exception("El nuevo correo electrónico ya está en uso.");
+                }
+                userToUpdate.Email = usuarioDto.Email;
+            }
+
+     
+            userToUpdate.Nombre = usuarioDto.Nombre;
+            userToUpdate.Apellido = usuarioDto.Apellido;
+            userToUpdate.dni = usuarioDto.dni;
+            userToUpdate.Email = usuarioDto.Email;
+            userToUpdate.Estado = usuarioDto.Estado;
+            userToUpdate.Id_Rol = usuarioDto.Id_Rol;
+
+            
+            if (!string.IsNullOrEmpty(usuarioDto.Password) && !BCrypt.Net.BCrypt.Verify(usuarioDto.Password, userToUpdate.Password))
+            {
+                userToUpdate.Password = BCrypt.Net.BCrypt.HashPassword(usuarioDto.Password);
+            }
+
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<UsuarioResponseDto> RegisterUserAsync(DtoUsuario registroDto) 
+        {
+           
+            var existingUser = await _context.Usuarios
+                .FirstOrDefaultAsync(u => u.User_Name == registroDto.User_Name || u.Email == registroDto.Email);
+
+            if (existingUser != null)
+            {
+                if (existingUser.User_Name == registroDto.User_Name)
+                    throw new Exception("El nombre de usuario ya está registrado.");
+                if (existingUser.Email == registroDto.Email)
+                    throw new Exception("El correo electrónico ya está registrado.");
+            }
+
+           
+            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(registroDto.Password);
+
+          
+            var clienteRol = await _context.Roles.FirstOrDefaultAsync(r => r.Nombre == "Cliente");
+            if (clienteRol == null)
+            {
+                
+                throw new Exception("Error de configuración: El rol 'Cliente' no se encontró en la base de datos. Asegúrate de crearlo.");
+            }
+
+            
+            var newUser = new UserModel
+            {
+                User_Name = registroDto.User_Name,
+                Password = hashedPassword, 
+                Nombre = registroDto.Nombre,
+                Apellido = registroDto.Apellido,
+                dni = registroDto.dni,     
+                Email = registroDto.Email,
+                Estado = true,             
+                Id_Rol = clienteRol.Id_Rol
+            };
+
+            _context.Usuarios.Add(newUser);
+            await _context.SaveChangesAsync();
+
+      
+       
+            await _context.Entry(newUser).Reference(u => u.Rol).LoadAsync();
+
+        
+            return new UsuarioResponseDto
+            {
+                Id_Usuario = newUser.Id_Usuario,
+                User_Name = newUser.User_Name,
+                Nombre = newUser.Nombre,
+                Apellido = newUser.Apellido,
+                Dni = newUser.dni,
+                Email = newUser.Email,
+                Estado = newUser.Estado,
+                Id_Rol = newUser.Id_Rol,
+                RolNombre = newUser.Rol?.Nombre
+            };
+        }
+
+        Task UsuarioInterfaz.PostUsuarios(DtoUsuario usuario)
+        {
+            throw new NotImplementedException();
+        }
     }
 } 
         

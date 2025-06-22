@@ -1,5 +1,6 @@
 using trabajoPracticoProgramacio4.Models;
 using trabajoPracticoProgramacion4.DTOs;
+using trabajoPracticoProgramacion4.Models;
 
 namespace trabajoPracticoProgramacion4.Interfaz
 {

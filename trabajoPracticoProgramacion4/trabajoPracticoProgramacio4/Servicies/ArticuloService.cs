@@ -1,7 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+using trabajoPracticoProgramacion4.Context;
+using trabajoPracticoProgramacion4.Interfaz;
+using trabajoPracticoProgramacion4.Models;
+
 public class ArticuloService : IArticulo
 {
-    private readonly ApplicationDbContext _context;
-    public ArticuloService(ApplicationDbContext context)
+    private readonly AppDbContext _context;
+
+    public ArticuloService(AppDbContext context)
     {
         _context = context;
     }
@@ -17,10 +23,10 @@ public class ArticuloService : IArticulo
     {
         var articulo = new ArticuloModel
         {
-            NombreArticulo = articuloDTO.NombreArticulo,
-            DescripcionArticulo = articuloDTO.DescripcionArticulo,
-            Estado = articuloDTO.Estado,
-            Precio = articuloDTO.Precio
+            NombreArticulo = articuloDTO.Nombre,
+            DescripcionArticulo = articuloDTO.Descripcion,
+            //Estado = articuloDTO.
+            Precio = articuloDTO.Precio,
         };
         _context.Articulos.Add(articulo);
         await _context.SaveChangesAsync();
@@ -30,9 +36,9 @@ public class ArticuloService : IArticulo
         var articulo = await _context.Articulos.FindAsync(id);
         if (articulo != null)
         {
-            articulo.NombreArticulo = articuloDTO.NombreArticulo;
-            articulo.DescripcionArticulo = articuloDTO.DescripcionArticulo;
-            articulo.Estado = articuloDTO.Estado;
+            articulo.NombreArticulo = articuloDTO.Nombre;
+            articulo.DescripcionArticulo = articuloDTO.Descripcion;
+           // articulo.Estado = articuloDTO.Estado;
             articulo.Precio = articuloDTO.Precio;
             _context.Articulos.Update(articulo);
             await _context.SaveChangesAsync();
@@ -46,5 +52,15 @@ public class ArticuloService : IArticulo
             _context.Articulos.Remove(articulo);
             await _context.SaveChangesAsync();
         }
+    }
+
+    Task<List<ArticuloModel>> IArticulo.GetAllArticulos()
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<ArticuloModel> IArticulo.GetArticuloPorID(int id)
+    {
+        throw new NotImplementedException();
     }
 }

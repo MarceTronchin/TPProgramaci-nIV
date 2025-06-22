@@ -9,6 +9,7 @@ using trabajoPracticoProgramacion4.DTOs;
 using trabajoPracticoProgramacio4.Models;
 using trabajoPracticoProgramacion4.Interfaz;
 using trabajoPracticoProgramacion4.Servicies;
+using Microsoft.AspNetCore.Authorization;
 
 namespace trabajoPracticoProgramacion4.Controllers
 {
@@ -22,6 +23,30 @@ namespace trabajoPracticoProgramacion4.Controllers
         {
             _context = context;
             Iusuario = iusuario;
+        }
+
+        [HttpPost("register")] // Ruta: api/Usuario/register
+        [AllowAnonymous] // Permite el acceso sin autenticación
+        public async Task<IActionResult> RegisterUser([FromBody] DtoUsuario registroDto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            try
+            {
+                var newUser = await Iusuario.RegisterUserAsync(registroDto); 
+                return CreatedAtAction(nameof(GetUsuario), new { id = newUser.Id_Usuario }, newUser);
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message.Contains("ya está registrado") || ex.Message.Contains("rol 'Cliente' no se encontró"))
+                {
+                    return Conflict(ex.Message);
+                }
+                return StatusCode(500, $"Error interno del servidor al registrar el usuario: {ex.Message}");
+            }
         }
 
         // GET: api/Usuario
@@ -62,11 +87,7 @@ namespace trabajoPracticoProgramacion4.Controllers
             }
         }
 
-        // PUT: api/Usuario/5
-        // Este endpoint actualiza un usuario existente.
-        // Recibe un DtoUsuario para la actualización.
-        // Aquí deberías añadir lógica de autorización para que un usuario solo pueda actualizarse a sí mismo
-        // o que un administrador pueda actualizar a cualquier usuario.
+        
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUsuario(int id, DtoUsuario usuarioDto)
         {
@@ -78,12 +99,9 @@ namespace trabajoPracticoProgramacion4.Controllers
                 return NotFound("Usuario no encontrado para actualizar.");
             }
 
-            // Actualizar las propiedades del usuario existente con los datos del DTO
+            
             usuarioExistente.User_Name = usuarioDto.User_Name;
-            // IMPORTANTE: NO HASHEAR LA CONTRASEÑA DE NUEVO SI NO SE CAMBIÓ O SI EL PUT ES PARA OTROS CAMPOS.
-            // Si el DtoUsuario incluye la contraseña, se debe manejar cuidadosamente.
-            // Si la contraseña no se envía o es vacía, no la actualices.
-            // Si se envía, hasheala. Para simplificar, asumimos que si se envía, se hashea de nuevo.
+            
             if (!string.IsNullOrWhiteSpace(usuarioDto.Password))
             {
                 usuarioExistente.Password = BCrypt.Net.BCrypt.HashPassword(usuarioDto.Password);
@@ -122,31 +140,30 @@ namespace trabajoPracticoProgramacion4.Controllers
             return NoContent(); // 204 No Content - Indica que la operación fue exitosa sin contenido para devolver.
         }
 
-        // DELETE: api/Usuario/5
-        // Este endpoint elimina un usuario por su Id_Usuario.
-        // Aquí deberías añadir autorización para que solo los administradores puedan eliminar usuarios.
+        private bool UsuarioExists(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUsuario(int id)
         {
-            var usuario = await _context.Usuarios.FindAsync(id);
-            if (usuario == null)
+            try
             {
-                return NotFound("Usuario no encontrado para eliminar.");
+                
+                await Iusuario.DeleteUsuario(id);
+                return NoContent(); 
             }
-
-            _context.Usuarios.Remove(usuario);
-            await _context.SaveChangesAsync();
-
-            return NoContent(); // 204 No Content
+            catch (Exception ex)
+            {
+                // Manejo de errores desde el servicio
+                if (ex.Message.Contains("no encontrado"))
+                {
+                    return NotFound(ex.Message); // 404 Not Found si el usuario no existe
+                }
+                return BadRequest($"Error al eliminar el usuario: {ex.Message}"); // 400 Bad Request para otros errores
+            }
         }
-
-        // Método auxiliar para verificar si un usuario existe
-        private bool UsuarioExists(int id)
-        {
-            return _context.Usuarios.Any(e => e.Id_Usuario == id);
-        }
-
-
         //Listo
         [HttpPost]
         public async Task<IActionResult> PostUsuario(DtoUsuario usuariodto)

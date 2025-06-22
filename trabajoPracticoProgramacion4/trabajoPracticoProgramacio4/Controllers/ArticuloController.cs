@@ -30,11 +30,10 @@ public class ArticuloController : ControllerBase
             return BadRequest(ModelState);
         var articulo = new ArticuloModel
         {
-            Nombre = articuloDTO.Nombre,
-            Descripcion = articuloDTO.Descripcion,
+            NombreArticulo = articuloDTO.Nombre,
+            DescripcionArticulo = articuloDTO.Descripcion,
             Precio = articuloDTO.Precio,
-            Cantidad = articuloDTO.Cantidad
-        };
+        }; 
 
         _context.Articulos.Add(articulo);
         await _context.SaveChangesAsync();
@@ -86,10 +85,10 @@ public class ArticuloController : ControllerBase
             return NotFound("No existe un artículo cargado con ese ID.");
         }
 
-        articuloYaExiste.Nombre = articuloDTO.Nombre;
-        articuloYaExiste.Descripcion = articuloDTO.Descripcion;
+        articuloYaExiste.NombreArticulo = articuloDTO.Nombre;
+        articuloYaExiste.DescripcionArticulo = articuloDTO.Descripcion;
         articuloYaExiste.Precio = articuloDTO.Precio;
-        articuloYaExiste.Cantidad = articuloDTO.Cantidad;
+     
 
         await _context.SaveChangesAsync();
         return Ok(new { mensaje = "Artículo actualizado correctamente.", articuloYaExiste });
