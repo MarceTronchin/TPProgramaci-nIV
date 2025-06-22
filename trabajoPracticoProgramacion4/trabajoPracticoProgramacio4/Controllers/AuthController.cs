@@ -8,6 +8,8 @@ using trabajoPracticoProgramacio4.Models;
 using trabajoPracticoProgramacion4.Context;
 using trabajoPracticoProgramacion4.Models;
 using Org.BouncyCastle.Crypto.Generators;
+using trabajoPracticoProgramacion4.Interfaz;
+using trabajoPracticoProgramacion4.Servicies;
 
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -20,11 +22,12 @@ namespace trabajoPracticoProgramacio4.Controllers
     {
         private readonly AppDbContext _context;
         private readonly IConfiguration _config; //
-
-        public AuthController(AppDbContext context, IConfiguration config) //
+        private readonly IAuthService _authService;
+        public AuthController(AppDbContext context, IConfiguration config , IAuthService authService) //
         {
             _context = context;
-            _config = config; 
+            _config = config;
+            _authService = authService;
         }
 
         [HttpPost] // LOGIN 
@@ -100,7 +103,7 @@ namespace trabajoPracticoProgramacio4.Controllers
 
                     Nombre = userDTO.Nombre,
                     Apellido = userDTO.Apellido,
-                    dni = userDTO.dni,
+                    dni = userDTO.Dni,
                     Email = userDTO.Email,
                     Estado = true,
                     Id_Rol = 2 // 2 por defecto - Rol de Cliente

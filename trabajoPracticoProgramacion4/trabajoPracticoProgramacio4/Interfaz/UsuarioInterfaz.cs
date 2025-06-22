@@ -5,10 +5,10 @@ namespace trabajoPracticoProgramacion4.Interfaz
 {
     public interface UsuarioInterfaz
     {
-        Task<List<UserModel>> GetUserModels();
+        Task<List<UsuarioResponseDto>> GetTodosUsuarios();
 
-        Task<UserModel> GetUsuarios(int id);
-        Task PostUsuarios( DtoUsuario usuario );
+        Task<UsuarioResponseDto> GetUsuariosPorId(int id);
+        Task PostUsuarios( DtoUsuario usuario ); //registro usuario
 
         Task PutUsuario(int id, DtoUsuario usuarioDto);
 

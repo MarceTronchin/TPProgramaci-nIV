@@ -18,7 +18,7 @@ namespace trabajoPracticoProgramacion4.Models
 
         [Column("Id_Cupon")] // Añadimos Id_Cupon para la FK a Cupones
         public int Id_Cupon { get; set; } 
-        public int Id_Usuario { get; set; }
+        public int  Id_Usuario { get; set; }
 
         public DateOnly FechaUso { get; set; }
 

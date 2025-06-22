@@ -2,6 +2,8 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using trabajoPracticoProgramacion4.Models;
 
+
+
 namespace trabajoPracticoProgramacio4.Models
 {
     [Table("Usuarios")]

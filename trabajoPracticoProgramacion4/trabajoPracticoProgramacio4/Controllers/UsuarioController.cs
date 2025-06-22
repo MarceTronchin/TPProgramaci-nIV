@@ -27,11 +27,18 @@ namespace trabajoPracticoProgramacion4.Controllers
         // GET: api/Usuario
         // Este endpoint obtiene todos los usuarios.
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<UserModel>>> GetUsuarios()
+        public async Task<ActionResult<IEnumerable<UsuarioResponseDto>>> GetUsuarios()
         {
-            // Opcional: Incluir el rol del usuario si es necesario para la respuesta
-            // return await _context.Usuarios.Include(u => u.Rol).ToListAsync();
-            return await _context.Usuarios.ToListAsync();
+            try
+            {
+                // La llamada al servicio ya devuelve List<UsuarioResponseDto>
+                var usuarios = await Iusuario.GetTodosUsuarios();
+                return Ok(usuarios); 
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error interno del servidor al obtener usuarios: {ex.Message}");
+            }
         }
 
         // GET: api/Usuario/5
@@ -41,12 +48,17 @@ namespace trabajoPracticoProgramacion4.Controllers
         {
             try
             {
-                UserModel usuario3 = await Iusuario.GetUsuarios(id);
-                return Ok(usuario3);
+                // La llamada al servicio ya devuelve UsuarioResponseDto
+                var usuario = await Iusuario.GetUsuariosPorId(id);
+                return Ok(usuario);
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                if (ex.Message.Contains("no encontrado"))
+                {
+                    return NotFound(ex.Message);
+                }
+                return BadRequest($"Error al obtener el usuario: {ex.Message}");
             }
         }
 
