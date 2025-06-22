@@ -12,18 +12,18 @@ using trabajoPracticoProgramacion4.DTOs;
 public class ArticuloController : ControllerBase
 {
     private readonly AppDbContext _context;
-    private readonly ArticuloInterfaz Iarticulo;
+    private readonly IArticulo _iArticulo;
 
-    public ArticuloController(AppDbContext context, ArticuloInterfaz iArticulo)
+    public ArticuloController(AppDbContext context, IArticulo iArticulo)
     {
         _context = context;
-        IArticulo = iArticulo;
+        _iArticulo = iArticulo;
     }
 
     //POST: api/Articulo 
     // Este endpoint CARGA un nuevo artículo -NO CLIENTE!!
     [HttpPost]
-    [Authorize(Roles != "Cliente")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> PostArticulo(ArticuloDTO articuloDTO)
     {
         if (!ModelState.IsValid)
@@ -39,7 +39,7 @@ public class ArticuloController : ControllerBase
         _context.Articulos.Add(articulo);
         await _context.SaveChangesAsync();
 
-        return Ok (new {mensaje = "Artículo creado correctamente.", articulo });
+        return Ok (new {mensaje = "Artículo creado correctamente.", articulo});
         }
         
 
@@ -60,7 +60,7 @@ public class ArticuloController : ControllerBase
     {
         try
         {
-            ArticuloModel articulo = await Iarticulo.GetArticulos(id);
+            ArticuloModel articulo = await _iArticulo.GetArticuloPorID(id);
             return Ok(articulo);
         }
         catch (Exception ex)
@@ -75,7 +75,7 @@ public class ArticuloController : ControllerBase
     // Este endpoint actualiza un articulo existente
     // Recibe un DtoArticulo para la actualización
     [HttpPut("{id}")]
-    [Authorize(Roles != "Cliente")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> PutArticulo(int id, ArticuloDTO articuloDTO)
     {
 
@@ -99,19 +99,19 @@ public class ArticuloController : ControllerBase
     // DELETE: api/Articulo/{id}
     // Este endpoint ELIMINA un articulo por su ID
     // solo los ADMIN pueden
-    // o AUDITOR o si hubiera EMPLEADO????????????????????????     CHEQUEAR CON LOS CHICOS!!!!!!!!!!
     [HttpDelete("{id}")]
     [Authorize(Roles = "Admin")]
     public async Task<IActionResult> DeleteArticulo(int id)
     {
-        var usuario = await _context.Usuarios.FindAsync(id);
-        if (usuario == null)
+        var articulo = await _context.Articulos.FindAsync(id);
+        if (articulo == null)
         {
-            return NotFound("Usuario no encontrado para eliminar.");
+            return NotFound("Articulo no encontrado para eliminar.");
         }
 
-        _context.Usuarios.Remove(usuario);
+        _context.Articulos.Remove(articulo);
         await _context.SaveChangesAsync();
+        return Ok(new { mensaje = "Artículo eliminado correctamente." });
 
         return NoContent();
     }
