@@ -27,7 +27,7 @@ namespace trabajoPracticoProgramacion4.Controllers
 
         [HttpPost("register")] // Ruta: api/Usuario/register
         [AllowAnonymous] // Permite el acceso sin autenticación
-        public async Task<IActionResult> RegisterUser([FromBody] DtoUsuario registroDto)
+        public async Task<IActionResult> RegisterUser([FromBody] UsuarioUpdateDto registroDto)
         {
             if (!ModelState.IsValid)
             {
@@ -36,7 +36,7 @@ namespace trabajoPracticoProgramacion4.Controllers
 
             try
             {
-                var newUser = await Iusuario.RegisterUserAsync(registroDto); 
+                var newUser = await Iusuario.RegisterUserAsync(registroDto);
                 return CreatedAtAction(nameof(GetUsuario), new { id = newUser.Id_Usuario }, newUser);
             }
             catch (Exception ex)
@@ -48,6 +48,7 @@ namespace trabajoPracticoProgramacion4.Controllers
                 return StatusCode(500, $"Error interno del servidor al registrar el usuario: {ex.Message}");
             }
         }
+
 
         // GET: api/Usuario
         // Este endpoint obtiene todos los usuarios.
@@ -73,7 +74,7 @@ namespace trabajoPracticoProgramacion4.Controllers
         {
             try
             {
-                // La llamada al servicio ya devuelve UsuarioResponseDto
+                
                 var usuario = await Iusuario.GetUsuariosPorId(id);
                 return Ok(usuario);
             }
@@ -89,55 +90,31 @@ namespace trabajoPracticoProgramacion4.Controllers
 
         
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUsuario(int id, DtoUsuario usuarioDto)
+        public async Task<IActionResult> PutUsuario(int id, [FromBody] UsuarioUpdateDto usuarioDto)
         {
-           
-            var usuarioExistente = await _context.Usuarios.FindAsync(id);
 
-            if (usuarioExistente == null)
+            if (!ModelState.IsValid)
             {
-                return NotFound("Usuario no encontrado para actualizar.");
+                return BadRequest(ModelState);
             }
-
-            
-            usuarioExistente.User_Name = usuarioDto.User_Name;
-            
-            if (!string.IsNullOrWhiteSpace(usuarioDto.Password))
-            {
-                usuarioExistente.Password = BCrypt.Net.BCrypt.HashPassword(usuarioDto.Password);
-            }
-
-            usuarioExistente.Nombre = usuarioDto.Nombre;
-            usuarioExistente.Apellido = usuarioDto.Apellido;
-            usuarioExistente.dni = usuarioDto.dni;
-            usuarioExistente.Email = usuarioDto.Email;
-            usuarioExistente.Estado = usuarioDto.Estado;
-            usuarioExistente.Id_Rol = usuarioDto.Id_Rol; // Cuidado: Solo admins deberían poder cambiar esto.
-
-            _context.Entry(usuarioExistente).State = EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                // Manejar si el usuario ya no existe o hubo un conflicto de concurrencia
-                if (!UsuarioExists(id))
-                {
-                    return NotFound("Usuario no encontrado después de intentar actualizar.");
-                }
-                else
-                {
-                    throw; // Re-lanza la excepción si es otro tipo de problema
-                }
+                await Iusuario.PutUsuario(id, usuarioDto);
+                return NoContent();
             }
             catch (Exception ex)
             {
+                if (ex.Message.Contains("no encontrado"))
+                {
+                    return NotFound(ex.Message);
+                }
+                if (ex.Message.Contains("ya está en uso"))
+                {
+                    return Conflict(ex.Message);
+                }
                 return BadRequest($"Error al actualizar el usuario: {ex.Message}");
             }
-
-            return NoContent(); // 204 No Content - Indica que la operación fue exitosa sin contenido para devolver.
         }
 
         private bool UsuarioExists(int id)
@@ -159,26 +136,26 @@ namespace trabajoPracticoProgramacion4.Controllers
                 // Manejo de errores desde el servicio
                 if (ex.Message.Contains("no encontrado"))
                 {
-                    return NotFound(ex.Message); // 404 Not Found si el usuario no existe
+                    return NotFound(ex.Message);
                 }
-                return BadRequest($"Error al eliminar el usuario: {ex.Message}"); // 400 Bad Request para otros errores
+                return BadRequest($"Error al eliminar el usuario: {ex.Message}");
             }
         }
         //Listo
         [HttpPost]
-        public async Task<IActionResult> PostUsuario(DtoUsuario usuariodto)
+        public async Task<IActionResult> PostUsuario(UsuarioUpdateDto usuariodto)
         {
             try
             {
                 if (usuariodto == null)
                     return BadRequest("Complete los campos");
 
-                  await Iusuario.PostUsuarios(usuariodto);
+                await Iusuario.PostUsuarios(usuariodto);
 
                 return Ok(new
                 {
                     Mensaje = "Se dio de alta el usuario",
-                    
+
                 });
 
 

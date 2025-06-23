@@ -17,11 +17,22 @@ namespace trabajoPracticoProgramacion4.Servicies
             _context = context;
         }
 
-        public Task DeleteUsuario(int id)
+        public async Task DeleteUsuario(int id)
         {
-            throw new NotImplementedException();
-        }
+            var usuario = await _context.Usuarios.FindAsync(id);
 
+            if (usuario == null)
+            {
+                throw new Exception($"Usuario con ID {id} no encontrado para eliminar.");
+            }
+
+            // Eliminación LÓGICA: marca el usuario como inactivo
+            usuario.Estado = false;
+            _context.Entry(usuario).State = EntityState.Modified;
+
+            await _context.SaveChangesAsync();
+        }
+        
         public async Task<List<UsuarioResponseDto>> GetTodosUsuarios()
         {
             var usuarios = await _context.Usuarios
@@ -67,7 +78,7 @@ namespace trabajoPracticoProgramacion4.Servicies
             };
         }
 
-        public async Task<UsuarioResponseDto> PostUsuarios(DtoUsuario usuario)
+        public async Task<UsuarioResponseDto> PostUsuarios(UsuarioUpdateDto usuario, string hashedPassword)
         {
        
             var existingUser = await _context.Usuarios
@@ -81,10 +92,6 @@ namespace trabajoPracticoProgramacion4.Servicies
                     throw new Exception("El correo electrónico ya está registrado.");
             }
 
-            // Contraseña HASHEADA
-            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(usuario.Password);
-
-          
             var clienteRol = await _context.Roles.FirstOrDefaultAsync(r => r.Nombre == "Cliente");
             if (clienteRol == null)
             {
@@ -126,52 +133,53 @@ namespace trabajoPracticoProgramacion4.Servicies
 
         
 
-        public async Task PutUsuario(int id, DtoUsuario usuarioDto)
+        public async Task PutUsuario(int id, UsuarioUpdateDto usuarioDto)
         {
-            var userToUpdate = await _context.Usuarios.FindAsync(id);
+            var usuarioDto1 = await _context.Usuarios.FindAsync(id);
 
-            if (userToUpdate == null)
+            if (usuarioDto1 == null)
             {
                 throw new Exception($"Usuario con ID {id} no encontrado para actualizar.");
             }
 
-            
-            if (usuarioDto.User_Name != userToUpdate.User_Name)
+
+            if (!string.IsNullOrEmpty(usuarioDto.User_Name) && usuarioDto.User_Name != usuarioDto1.User_Name)
             {
-                if (await _context.Usuarios.AnyAsync(u => u.User_Name == usuarioDto.User_Name && u.Id_Usuario != id))
+                if (await _context.Usuarios.AnyAsync(u => u.User_Name == usuarioDto1.User_Name && u.Id_Usuario != id))
                 {
                     throw new Exception("El nuevo nombre de usuario ya está en uso.");
                 }
-                userToUpdate.User_Name = usuarioDto.User_Name;
+                usuarioDto.User_Name = usuarioDto.User_Name;
             }
 
-            if (usuarioDto.Email != userToUpdate.Email)
+            if (!string.IsNullOrEmpty(usuarioDto.Email) && usuarioDto.Email != usuarioDto1.Email)
             {
                 if (await _context.Usuarios.AnyAsync(u => u.Email == usuarioDto.Email && u.Id_Usuario != id))
                 {
                     throw new Exception("El nuevo correo electrónico ya está en uso.");
                 }
-                userToUpdate.Email = usuarioDto.Email;
+                usuarioDto1.Email = usuarioDto.Email;
             }
 
-     
-            userToUpdate.Nombre = usuarioDto.Nombre;
-            userToUpdate.Apellido = usuarioDto.Apellido;
-            userToUpdate.dni = usuarioDto.dni;
-            userToUpdate.Email = usuarioDto.Email;
-            userToUpdate.Estado = usuarioDto.Estado;
-            userToUpdate.Id_Rol = usuarioDto.Id_Rol;
-
-            
-            if (!string.IsNullOrEmpty(usuarioDto.Password) && !BCrypt.Net.BCrypt.Verify(usuarioDto.Password, userToUpdate.Password))
-            {
-                userToUpdate.Password = BCrypt.Net.BCrypt.HashPassword(usuarioDto.Password);
-            }
+            if (usuarioDto.Nombre != null) usuarioDto1.Nombre = usuarioDto.Nombre;
+            if (usuarioDto.Apellido != null) usuarioDto1.Apellido = usuarioDto.Apellido;
+            if (usuarioDto.dni != null) usuarioDto1.dni = usuarioDto.dni;
+            if (usuarioDto.Email != null) usuarioDto1.Email = usuarioDto.Email;
+            if (usuarioDto.Estado != true) usuarioDto1.Estado = usuarioDto.Estado;
+            if (usuarioDto.Id_Rol != null) usuarioDto1.Id_Rol = usuarioDto.Id_Rol;
 
             await _context.SaveChangesAsync();
+
+
+            // if (!string.IsNullOrEmpty(usuarioDto.Password) && !BCrypt.Net.BCrypt.Verify(usuarioDto.Password, userToUpdate.Password))
+            // {
+            //     usuarioDto1.Password = BCrypt.Net.BCrypt.HashPassword(usuarioDto.Password);
+            // }
+
+            //await _context.SaveChangesAsync();
         }
 
-        public async Task<UsuarioResponseDto> RegisterUserAsync(DtoUsuario registroDto) 
+        public async Task<UsuarioResponseDto> RegisterUserAsync(UsuarioUpdateDto registroDto, string hashedPassword) 
         {
            
             var existingUser = await _context.Usuarios
@@ -185,10 +193,6 @@ namespace trabajoPracticoProgramacion4.Servicies
                     throw new Exception("El correo electrónico ya está registrado.");
             }
 
-           
-            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(registroDto.Password);
-
-          
             var clienteRol = await _context.Roles.FirstOrDefaultAsync(r => r.Nombre == "Cliente");
             if (clienteRol == null)
             {
@@ -231,7 +235,17 @@ namespace trabajoPracticoProgramacion4.Servicies
             };
         }
 
-        Task UsuarioInterfaz.PostUsuarios(DtoUsuario usuario)
+        public Task<UsuarioResponseDto> RegisterUserAsync(UsuarioUpdateDto registroDto)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task UsuarioInterfaz.PostUsuarios(UsuarioUpdateDto usuario)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task UsuarioInterfaz.RegisterUserAsync(UsuarioUpdateDto registroDto, string v)
         {
             throw new NotImplementedException();
         }

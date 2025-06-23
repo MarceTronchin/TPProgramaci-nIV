@@ -2,12 +2,12 @@
 
 namespace trabajoPracticoProgramacion4.DTOs
 {
-    public class DtoUsuario
+    public class UsuarioUpdateDto
     {
         [Required]
         public string User_Name { get; set; }
-        [Required]
-        public string Password { get; set; }
+        //[Required]
+        //public string Password { get; set; }
         [Required]
         public string Nombre { get; set; }
         [Required]

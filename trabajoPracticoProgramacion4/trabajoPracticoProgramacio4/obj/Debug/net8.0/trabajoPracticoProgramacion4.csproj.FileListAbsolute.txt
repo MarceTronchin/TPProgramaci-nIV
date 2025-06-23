@@ -172,3 +172,5 @@ C:\xampp\htdocs\TPProgramaci-nIV\trabajoPracticoProgramacion4\trabajoPracticoPro
 C:\xampp\htdocs\TPProgramaci-nIV\trabajoPracticoProgramacion4\trabajoPracticoProgramacio4\obj\Debug\net8.0\trabajoPracticoProgramacion4.pdb
 C:\xampp\htdocs\TPProgramaci-nIV\trabajoPracticoProgramacion4\trabajoPracticoProgramacio4\obj\Debug\net8.0\trabajoPracticoProgramacion4.genruntimeconfig.cache
 C:\xampp\htdocs\TPProgramaci-nIV\trabajoPracticoProgramacion4\trabajoPracticoProgramacio4\obj\Debug\net8.0\ref\trabajoPracticoProgramacion4.dll
+C:\xampp\htdocs\TPProgramaci-nIV\trabajoPracticoProgramacion4\trabajoPracticoProgramacio4\bin\Debug\net8.0\BCrypt.Net-Next.dll
+C:\xampp\htdocs\TPProgramaci-nIV\trabajoPracticoProgramacion4\trabajoPracticoProgramacio4\bin\Debug\net8.0\BouncyCastle.Crypto.dll

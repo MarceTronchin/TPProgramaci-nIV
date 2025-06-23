@@ -3,6 +3,7 @@ using trabajoPracticoProgramacio4.Models;
 using trabajoPracticoProgramacion4.Context;
 using trabajoPracticoProgramacion4.Interfaz;
 using trabajoPracticoProgramacion4.DTOs;
+using trabajoPracticoProgramacion4.Helpers;
 
 public class CuponService : CuponInterfaz
 {

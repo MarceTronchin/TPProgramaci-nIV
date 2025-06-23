@@ -1,18 +1,90 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\ivan_\\Desktop\\Programacion 4\\trabajoPracticoProgramacio4\\",
+  "WorkspaceRootPath": "C:\\xampp\\htdocs\\TPProgramaci-nIV\\trabajoPracticoProgramacion4\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacio4.csproj|c:\\users\\ivan_\\desktop\\programacion 4\\trabajopracticoprogramacio4\\trabajopracticoprogramacio4\\models\\usermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacio4.csproj|solutionrelative:trabajopracticoprogramacio4\\models\\usermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj|c:\\xampp\\htdocs\\tpprogramaci-niv\\trabajopracticoprogramacion4\\trabajopracticoprogramacio4\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj|solutionrelative:trabajopracticoprogramacio4\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacio4.csproj|c:\\users\\ivan_\\desktop\\programacion 4\\trabajopracticoprogramacio4\\trabajopracticoprogramacio4\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacio4.csproj|solutionrelative:trabajopracticoprogramacio4\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj|c:\\xampp\\htdocs\\tpprogramaci-niv\\trabajopracticoprogramacion4\\trabajopracticoprogramacio4\\servicies\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj|solutionrelative:trabajopracticoprogramacio4\\servicies\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj|c:\\users\\ivan_\\desktop\\programacion 4\\trabajopracticoprogramacio4\\trabajopracticoprogramacio4\\trabajopracticoprogramacion4.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj|solutionrelative:trabajopracticoprogramacio4\\trabajopracticoprogramacion4.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj|c:\\xampp\\htdocs\\tpprogramaci-niv\\trabajopracticoprogramacion4\\trabajopracticoprogramacio4\\dtos\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj|solutionrelative:trabajopracticoprogramacio4\\dtos\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj|c:\\xampp\\htdocs\\tpprogramaci-niv\\trabajopracticoprogramacion4\\trabajopracticoprogramacio4\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj|solutionrelative:trabajopracticoprogramacio4\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj|c:\\xampp\\htdocs\\tpprogramaci-niv\\trabajopracticoprogramacion4\\trabajopracticoprogramacio4\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj|solutionrelative:trabajopracticoprogramacio4\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj|c:\\xampp\\htdocs\\tpprogramaci-niv\\trabajopracticoprogramacion4\\trabajopracticoprogramacio4\\controllers\\articulocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj|solutionrelative:trabajopracticoprogramacio4\\controllers\\articulocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj|c:\\xampp\\htdocs\\tpprogramaci-niv\\trabajopracticoprogramacion4\\trabajopracticoprogramacio4\\dtos\\articulodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj|solutionrelative:trabajopracticoprogramacio4\\dtos\\articulodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj|c:\\xampp\\htdocs\\tpprogramaci-niv\\trabajopracticoprogramacion4\\trabajopracticoprogramacio4\\models\\articulomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj|solutionrelative:trabajopracticoprogramacio4\\models\\articulomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj|c:\\xampp\\htdocs\\tpprogramaci-niv\\trabajopracticoprogramacion4\\trabajopracticoprogramacio4\\servicies\\usuarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj|solutionrelative:trabajopracticoprogramacio4\\servicies\\usuarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj|c:\\xampp\\htdocs\\tpprogramaci-niv\\trabajopracticoprogramacion4\\trabajopracticoprogramacio4\\interfaz\\usuariointerfaz.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj|solutionrelative:trabajopracticoprogramacio4\\interfaz\\usuariointerfaz.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj|c:\\xampp\\htdocs\\tpprogramaci-niv\\trabajopracticoprogramacion4\\trabajopracticoprogramacio4\\models\\usermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj|solutionrelative:trabajopracticoprogramacio4\\models\\usermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj|c:\\xampp\\htdocs\\tpprogramaci-niv\\trabajopracticoprogramacion4\\trabajopracticoprogramacio4\\dtos\\usuarioresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj|solutionrelative:trabajopracticoprogramacio4\\dtos\\usuarioresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj|c:\\xampp\\htdocs\\tpprogramaci-niv\\trabajopracticoprogramacion4\\trabajopracticoprogramacio4\\interfaz\\iarticulo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj|solutionrelative:trabajopracticoprogramacio4\\interfaz\\iarticulo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj|c:\\xampp\\htdocs\\tpprogramaci-niv\\trabajopracticoprogramacion4\\trabajopracticoprogramacio4\\servicies\\articuloservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj|solutionrelative:trabajopracticoprogramacio4\\servicies\\articuloservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj|c:\\xampp\\htdocs\\tpprogramaci-niv\\trabajopracticoprogramacion4\\trabajopracticoprogramacio4\\dtos\\registrousuariodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj|solutionrelative:trabajopracticoprogramacio4\\dtos\\registrousuariodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj|c:\\xampp\\htdocs\\tpprogramaci-niv\\trabajopracticoprogramacion4\\trabajopracticoprogramacio4\\dtos\\dtousuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj|solutionrelative:trabajopracticoprogramacio4\\dtos\\dtousuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj|c:\\xampp\\htdocs\\tpprogramaci-niv\\trabajopracticoprogramacion4\\trabajopracticoprogramacio4\\models\\rolmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj|solutionrelative:trabajopracticoprogramacio4\\models\\rolmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj|c:\\xampp\\htdocs\\tpprogramaci-niv\\trabajopracticoprogramacion4\\trabajopracticoprogramacio4\\models\\tipocuponmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj|solutionrelative:trabajopracticoprogramacio4\\models\\tipocuponmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj|c:\\xampp\\htdocs\\tpprogramaci-niv\\trabajopracticoprogramacion4\\trabajopracticoprogramacio4\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj|solutionrelative:trabajopracticoprogramacio4\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj|c:\\xampp\\htdocs\\tpprogramaci-niv\\trabajopracticoprogramacion4\\trabajopracticoprogramacio4\\context\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj|solutionrelative:trabajopracticoprogramacio4\\context\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj|c:\\xampp\\htdocs\\tpprogramaci-niv\\trabajopracticoprogramacion4\\trabajopracticoprogramacio4\\models\\cuponmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1822D228-4B43-4F20-BA28-FE3A10EE5EEA}|trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj|solutionrelative:trabajopracticoprogramacio4\\models\\cuponmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,41 +99,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "UserModel.cs",
-              "DocumentMoniker": "C:\\Users\\ivan_\\Desktop\\Programacion 4\\trabajoPracticoProgramacio4\\trabajoPracticoProgramacio4\\Models\\UserModel.cs",
-              "RelativeDocumentMoniker": "trabajoPracticoProgramacio4\\Models\\UserModel.cs",
-              "ToolTip": "C:\\Users\\ivan_\\Desktop\\Programacion 4\\trabajoPracticoProgramacio4\\trabajoPracticoProgramacio4\\Models\\UserModel.cs",
-              "RelativeToolTip": "trabajoPracticoProgramacio4\\Models\\UserModel.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAAAAQAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-10T01:00:29.349Z",
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\TPProgramaci-nIV\\trabajoPracticoProgramacion4\\trabajoPracticoProgramacio4\\appsettings.json",
+              "RelativeDocumentMoniker": "trabajoPracticoProgramacio4\\appsettings.json",
+              "ToolTip": "C:\\xampp\\htdocs\\TPProgramaci-nIV\\trabajoPracticoProgramacion4\\trabajoPracticoProgramacio4\\appsettings.json",
+              "RelativeToolTip": "trabajoPracticoProgramacio4\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-06-22T23:43:23.892Z",
               "EditorCaption": ""
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\Users\\ivan_\\Desktop\\Programacion 4\\trabajoPracticoProgramacio4\\trabajoPracticoProgramacio4\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "trabajoPracticoProgramacio4\\Controllers\\AuthController.cs",
-              "ToolTip": "C:\\Users\\ivan_\\Desktop\\Programacion 4\\trabajoPracticoProgramacio4\\trabajoPracticoProgramacio4\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "trabajoPracticoProgramacio4\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-10T00:59:30.936Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "trabajoPracticoProgramacion4.csproj",
-              "DocumentMoniker": "C:\\Users\\ivan_\\Desktop\\Programacion 4\\trabajoPracticoProgramacio4\\trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj",
-              "RelativeDocumentMoniker": "trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj",
-              "ToolTip": "C:\\Users\\ivan_\\Desktop\\Programacion 4\\trabajoPracticoProgramacio4\\trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj",
-              "RelativeToolTip": "trabajoPracticoProgramacio4\\trabajoPracticoProgramacion4.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-06-10T00:58:12.436Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Bookmark",
@@ -78,6 +128,266 @@
             {
               "$type": "Bookmark",
               "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UsuarioController.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\TPProgramaci-nIV\\trabajoPracticoProgramacion4\\trabajoPracticoProgramacio4\\Controllers\\UsuarioController.cs",
+              "RelativeDocumentMoniker": "trabajoPracticoProgramacio4\\Controllers\\UsuarioController.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\TPProgramaci-nIV\\trabajoPracticoProgramacion4\\trabajoPracticoProgramacio4\\Controllers\\UsuarioController.cs",
+              "RelativeToolTip": "trabajoPracticoProgramacio4\\Controllers\\UsuarioController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-20T20:22:44.593Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ArticuloController.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\TPProgramaci-nIV\\trabajoPracticoProgramacion4\\trabajoPracticoProgramacio4\\Controllers\\ArticuloController.cs",
+              "RelativeDocumentMoniker": "trabajoPracticoProgramacio4\\Controllers\\ArticuloController.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\TPProgramaci-nIV\\trabajoPracticoProgramacion4\\trabajoPracticoProgramacio4\\Controllers\\ArticuloController.cs",
+              "RelativeToolTip": "trabajoPracticoProgramacio4\\Controllers\\ArticuloController.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAA0AAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-22T22:23:36.986Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\TPProgramaci-nIV\\trabajoPracticoProgramacion4\\trabajoPracticoProgramacio4\\Program.cs",
+              "RelativeDocumentMoniker": "trabajoPracticoProgramacio4\\Program.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\TPProgramaci-nIV\\trabajoPracticoProgramacion4\\trabajoPracticoProgramacio4\\Program.cs",
+              "RelativeToolTip": "trabajoPracticoProgramacio4\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-20T20:56:55.676Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LoginDto.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\TPProgramaci-nIV\\trabajoPracticoProgramacion4\\trabajoPracticoProgramacio4\\DTOs\\LoginDto.cs",
+              "RelativeDocumentMoniker": "trabajoPracticoProgramacio4\\DTOs\\LoginDto.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\TPProgramaci-nIV\\trabajoPracticoProgramacion4\\trabajoPracticoProgramacio4\\DTOs\\LoginDto.cs",
+              "RelativeToolTip": "trabajoPracticoProgramacio4\\DTOs\\LoginDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-22T16:04:20.208Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\TPProgramaci-nIV\\trabajoPracticoProgramacion4\\trabajoPracticoProgramacio4\\Servicies\\AuthService.cs",
+              "RelativeDocumentMoniker": "trabajoPracticoProgramacio4\\Servicies\\AuthService.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\TPProgramaci-nIV\\trabajoPracticoProgramacion4\\trabajoPracticoProgramacio4\\Servicies\\AuthService.cs",
+              "RelativeToolTip": "trabajoPracticoProgramacio4\\Servicies\\AuthService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-22T20:49:38.08Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "UsuarioResponseDto.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\TPProgramaci-nIV\\trabajoPracticoProgramacion4\\trabajoPracticoProgramacio4\\DTOs\\UsuarioResponseDto.cs",
+              "RelativeDocumentMoniker": "trabajoPracticoProgramacio4\\DTOs\\UsuarioResponseDto.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\TPProgramaci-nIV\\trabajoPracticoProgramacion4\\trabajoPracticoProgramacio4\\DTOs\\UsuarioResponseDto.cs",
+              "RelativeToolTip": "trabajoPracticoProgramacio4\\DTOs\\UsuarioResponseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-22T15:48:26.018Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UsuarioInterfaz.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\TPProgramaci-nIV\\trabajoPracticoProgramacion4\\trabajoPracticoProgramacio4\\Interfaz\\UsuarioInterfaz.cs",
+              "RelativeDocumentMoniker": "trabajoPracticoProgramacio4\\Interfaz\\UsuarioInterfaz.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\TPProgramaci-nIV\\trabajoPracticoProgramacion4\\trabajoPracticoProgramacio4\\Interfaz\\UsuarioInterfaz.cs",
+              "RelativeToolTip": "trabajoPracticoProgramacio4\\Interfaz\\UsuarioInterfaz.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-20T20:45:30.12Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "UsuarioService.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\TPProgramaci-nIV\\trabajoPracticoProgramacion4\\trabajoPracticoProgramacio4\\Servicies\\UsuarioService.cs",
+              "RelativeDocumentMoniker": "trabajoPracticoProgramacio4\\Servicies\\UsuarioService.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\TPProgramaci-nIV\\trabajoPracticoProgramacion4\\trabajoPracticoProgramacio4\\Servicies\\UsuarioService.cs",
+              "RelativeToolTip": "trabajoPracticoProgramacio4\\Servicies\\UsuarioService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAO4AAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-20T20:52:22.296Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "UserModel.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\TPProgramaci-nIV\\trabajoPracticoProgramacion4\\trabajoPracticoProgramacio4\\Models\\UserModel.cs",
+              "RelativeDocumentMoniker": "trabajoPracticoProgramacio4\\Models\\UserModel.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\TPProgramaci-nIV\\trabajoPracticoProgramacion4\\trabajoPracticoProgramacio4\\Models\\UserModel.cs",
+              "RelativeToolTip": "trabajoPracticoProgramacio4\\Models\\UserModel.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAYwAgAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-20T21:12:29.91Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ArticuloDTO.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\TPProgramaci-nIV\\trabajoPracticoProgramacion4\\trabajoPracticoProgramacio4\\DTOs\\ArticuloDTO.cs",
+              "RelativeDocumentMoniker": "trabajoPracticoProgramacio4\\DTOs\\ArticuloDTO.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\TPProgramaci-nIV\\trabajoPracticoProgramacion4\\trabajoPracticoProgramacio4\\DTOs\\ArticuloDTO.cs",
+              "RelativeToolTip": "trabajoPracticoProgramacio4\\DTOs\\ArticuloDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-22T22:08:12.707Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ArticuloModel.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\TPProgramaci-nIV\\trabajoPracticoProgramacion4\\trabajoPracticoProgramacio4\\Models\\ArticuloModel.cs",
+              "RelativeDocumentMoniker": "trabajoPracticoProgramacio4\\Models\\ArticuloModel.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\TPProgramaci-nIV\\trabajoPracticoProgramacion4\\trabajoPracticoProgramacio4\\Models\\ArticuloModel.cs",
+              "RelativeToolTip": "trabajoPracticoProgramacio4\\Models\\ArticuloModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-22T22:53:59.786Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ArticuloService.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\TPProgramaci-nIV\\trabajoPracticoProgramacion4\\trabajoPracticoProgramacio4\\Servicies\\ArticuloService.cs",
+              "RelativeDocumentMoniker": "trabajoPracticoProgramacio4\\Servicies\\ArticuloService.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\TPProgramaci-nIV\\trabajoPracticoProgramacion4\\trabajoPracticoProgramacio4\\Servicies\\ArticuloService.cs",
+              "RelativeToolTip": "trabajoPracticoProgramacio4\\Servicies\\ArticuloService.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAACwAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-22T22:12:05.008Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "IArticulo.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\TPProgramaci-nIV\\trabajoPracticoProgramacion4\\trabajoPracticoProgramacio4\\Interfaz\\IArticulo.cs",
+              "RelativeDocumentMoniker": "trabajoPracticoProgramacio4\\Interfaz\\IArticulo.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\TPProgramaci-nIV\\trabajoPracticoProgramacion4\\trabajoPracticoProgramacio4\\Interfaz\\IArticulo.cs",
+              "RelativeToolTip": "trabajoPracticoProgramacio4\\Interfaz\\IArticulo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-22T22:09:11.687Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "RegistroUsuarioDTO.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\TPProgramaci-nIV\\trabajoPracticoProgramacion4\\trabajoPracticoProgramacio4\\DTOs\\RegistroUsuarioDTO.cs",
+              "RelativeDocumentMoniker": "trabajoPracticoProgramacio4\\DTOs\\RegistroUsuarioDTO.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\TPProgramaci-nIV\\trabajoPracticoProgramacion4\\trabajoPracticoProgramacio4\\DTOs\\RegistroUsuarioDTO.cs",
+              "RelativeToolTip": "trabajoPracticoProgramacio4\\DTOs\\RegistroUsuarioDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-20T20:25:46.624Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "DtoUsuario.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\TPProgramaci-nIV\\trabajoPracticoProgramacion4\\trabajoPracticoProgramacio4\\DTOs\\DtoUsuario.cs",
+              "RelativeDocumentMoniker": "trabajoPracticoProgramacio4\\DTOs\\DtoUsuario.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\TPProgramaci-nIV\\trabajoPracticoProgramacion4\\trabajoPracticoProgramacio4\\DTOs\\DtoUsuario.cs",
+              "RelativeToolTip": "trabajoPracticoProgramacio4\\DTOs\\DtoUsuario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-20T21:18:10.518Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "RolModel.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\TPProgramaci-nIV\\trabajoPracticoProgramacion4\\trabajoPracticoProgramacio4\\Models\\RolModel.cs",
+              "RelativeDocumentMoniker": "trabajoPracticoProgramacio4\\Models\\RolModel.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\TPProgramaci-nIV\\trabajoPracticoProgramacion4\\trabajoPracticoProgramacio4\\Models\\RolModel.cs",
+              "RelativeToolTip": "trabajoPracticoProgramacio4\\Models\\RolModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-22T21:15:25.515Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "TipoCuponModel.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\TPProgramaci-nIV\\trabajoPracticoProgramacion4\\trabajoPracticoProgramacio4\\Models\\TipoCuponModel.cs",
+              "RelativeDocumentMoniker": "trabajoPracticoProgramacio4\\Models\\TipoCuponModel.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\TPProgramaci-nIV\\trabajoPracticoProgramacion4\\trabajoPracticoProgramacio4\\Models\\TipoCuponModel.cs",
+              "RelativeToolTip": "trabajoPracticoProgramacio4\\Models\\TipoCuponModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-22T21:15:24.109Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\TPProgramaci-nIV\\trabajoPracticoProgramacion4\\trabajoPracticoProgramacio4\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "trabajoPracticoProgramacio4\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\TPProgramaci-nIV\\trabajoPracticoProgramacion4\\trabajoPracticoProgramacio4\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "trabajoPracticoProgramacio4\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAACAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-22T20:51:25.141Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\TPProgramaci-nIV\\trabajoPracticoProgramacion4\\trabajoPracticoProgramacio4\\Context\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "trabajoPracticoProgramacio4\\Context\\AppDbContext.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\TPProgramaci-nIV\\trabajoPracticoProgramacion4\\trabajoPracticoProgramacio4\\Context\\AppDbContext.cs",
+              "RelativeToolTip": "trabajoPracticoProgramacio4\\Context\\AppDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-20T17:39:17.31Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "CuponModel.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\TPProgramaci-nIV\\trabajoPracticoProgramacion4\\trabajoPracticoProgramacio4\\Models\\CuponModel.cs",
+              "RelativeDocumentMoniker": "trabajoPracticoProgramacio4\\Models\\CuponModel.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\TPProgramaci-nIV\\trabajoPracticoProgramacion4\\trabajoPracticoProgramacio4\\Models\\CuponModel.cs",
+              "RelativeToolTip": "trabajoPracticoProgramacio4\\Models\\CuponModel.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAQwB0AAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-20T17:14:54.276Z",
+              "EditorCaption": ""
             }
           ]
         }
