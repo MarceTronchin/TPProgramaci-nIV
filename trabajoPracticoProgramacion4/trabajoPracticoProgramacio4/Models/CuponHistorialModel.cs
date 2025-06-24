@@ -11,25 +11,30 @@ namespace trabajoPracticoProgramacion4.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Column("IdHistorial")] // Nueva columna para ser la clave primaria autoincremental
+        [Column("IdHistorial")]
         public int IdHistorial { get; set; }
 
         public string NroCupon { get; set; }
 
-        [Column("Id_Cupon")] // Añadimos Id_Cupon para la FK a Cupones
+
+        [Column("Id_Cupon")] // para la FK a Cupones
         public int Id_Cupon { get; set; } 
         public int  Id_Usuario { get; set; }
 
-        public DateOnly FechaUso { get; set; }
+        public DateTime FechaUso { get; set; }
+
 
         #region Navegacion
+
         [ForeignKey("Id_Usuario")]
         public UserModel Usuario { get; set; } 
+
 
         [ForeignKey("Id_Cupon")]
         public CuponModel Cupon { get; set; }
 
         #endregion
+
 
     }
 }

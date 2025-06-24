@@ -19,7 +19,7 @@ namespace trabajoPracticoProgramacion4.Controllers
 
         // GET: api/Cupon
         [HttpGet("{nroCupon:int}/{idArticulo:int}")]
-        public async Task<ActionResult<CuponDetalle>> Get(string nroCupon, int idArticulo)
+        public async Task<ActionResult<CuponDetalle>> GetDetalleAsync(string nroCupon, int idArticulo)
         {
             var detalle = await _cuponService.GetDetalleAsync(nroCupon, idArticulo);
             if (detalle == null)
@@ -44,13 +44,13 @@ namespace trabajoPracticoProgramacion4.Controllers
         }
 
         // PUT: api/Cupon
-        [HttpPut("{string nroCupon}/{idArticulo:int}")]
+        [HttpPut("{idArticulo:int}")]
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult> PutCupon(string nroCupon, int idArticulo, [FromBody] DtoCupon cuponDto)
+        public async Task<ActionResult> PutCupon(int idArticulo, [FromBody] DtoCupon cuponDto)
         {
             try
             {
-                await _cuponService.PutCupon(string nroCupon, int idArticulo, cuponDto);
+                await _cuponService.PutCupon(idArticulo, cuponDto);
                 return Ok(new { message = "Cupón actualizado correctamente" });
             }
             catch (Exception ex)
@@ -60,13 +60,13 @@ namespace trabajoPracticoProgramacion4.Controllers
         }
 
         // DELETE: api/Cupon
-        [HttpDelete("{idCupon:int}/{idArticulo:int}")]
+        [HttpDelete("{idArticulo:int}")]
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult> DeleteCupon(string nroCupon, int idArticulo)
+        public async Task<ActionResult> DeleteCupon(int idArticulo)
         {
             try
             {
-                await _cuponService.DeleteCupon(string nroCupon, idArticulo);
+                await _cuponService.DeleteCupon(idArticulo);
                 return Ok(new { message = "Cupón eliminado correctamente" });
             }
             catch (Exception ex)

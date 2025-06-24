@@ -10,7 +10,7 @@ namespace trabajoPracticoProgramacion4.Controllers
     [Route("api/[controller]")]
     public class CuponController : ControllerBase
     {
-        private readonly CuponInterfaz cuponService;
+        private readonly CuponInterfaz _cuponService;
         private readonly ICuponCliente _cuponClienteService;
 
         public CuponController(CuponInterfaz cuponService, ICuponCliente cuponClienteService)
@@ -44,13 +44,13 @@ namespace trabajoPracticoProgramacion4.Controllers
             return Ok(detalles);
         }
 
-        [HttpGet("activos-vigentes")]
+       /* [HttpGet("activos-vigentes")]
         public async Task<ActionResult<List<CuponModel>>> GetCuponesActivosYVigentes()
         {
             var cupones = await _cuponService.GetCuponesActivosYVigentes();
             return Ok(cupones);
         }
-
+       */
 
         // POST: api/Cupon
         [HttpPost]
