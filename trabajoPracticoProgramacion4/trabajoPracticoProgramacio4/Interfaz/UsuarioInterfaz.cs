@@ -8,13 +8,14 @@ namespace trabajoPracticoProgramacion4.Interfaz
         Task<List<UsuarioResponseDto>> GetTodosUsuarios();
 
         Task<UsuarioResponseDto> GetUsuariosPorId(int id);
-        Task PostUsuarios( UsuarioUpdateDto usuario ); //registro usuario
 
-        Task PutUsuario(int id, UsuarioUpdateDto usuarioDto);
+        Task PutUsuario(int id, string nombre);
 
         Task DeleteUsuario(int id );
 
-        Task<UsuarioResponseDto> RegisterUserAsync(UsuarioUpdateDto registroDto);
-        Task RegisterUserAsync(UsuarioUpdateDto registroDto, string v);
+        Task CreateUserByAdminAsync(RegistroUsuarioDTO createUserDto, int roleId);
+
+        Task<UsuarioResponseDto> RegisterUserAsync(RegistroUsuarioDTO createUserDto);
+
     }
 }

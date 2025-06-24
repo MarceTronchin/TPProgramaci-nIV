@@ -27,7 +27,7 @@ namespace trabajoPracticoProgramacion4.Controllers
 
         [HttpPost("register")] // Ruta: api/Usuario/register
         [AllowAnonymous] // Permite el acceso sin autenticación
-        public async Task<IActionResult> RegisterUser([FromBody] UsuarioUpdateDto registroDto)
+        public async Task<IActionResult> RegisterUser([FromBody] RegistroUsuarioDTO registroDto)
         {
             if (!ModelState.IsValid)
             {
@@ -36,28 +36,34 @@ namespace trabajoPracticoProgramacion4.Controllers
 
             try
             {
+
                 var newUser = await Iusuario.RegisterUserAsync(registroDto);
-                return CreatedAtAction(nameof(GetUsuario), new { id = newUser.Id_Usuario }, newUser);
+
+
+                return CreatedAtAction(nameof(GetUsuario), new { id = newUser }, newUser);
             }
             catch (Exception ex)
             {
-                if (ex.Message.Contains("ya está registrado") || ex.Message.Contains("rol 'Cliente' no se encontró"))
+                
+                if (ex.Message.Contains("ya está registrado") || ex.Message.Contains("rol 'Cliente' no se encontró") || ex.Message.Contains("email ya está registrado"))
                 {
                     return Conflict(ex.Message);
                 }
                 return StatusCode(500, $"Error interno del servidor al registrar el usuario: {ex.Message}");
             }
         }
+        
 
 
         // GET: api/Usuario
         // Este endpoint obtiene todos los usuarios.
         [HttpGet]
+        [Authorize(Roles = "Admin, Auditor")]
         public async Task<ActionResult<IEnumerable<UsuarioResponseDto>>> GetUsuarios()
         {
             try
             {
-                // La llamada al servicio ya devuelve List<UsuarioResponseDto>
+                
                 var usuarios = await Iusuario.GetTodosUsuarios();
                 return Ok(usuarios); 
             }
@@ -70,6 +76,7 @@ namespace trabajoPracticoProgramacion4.Controllers
         // GET: api/Usuario/5
         // Este endpoint obtiene un usuario por su Id_Usuario. (listo)
         [HttpGet("{id}")]
+        [Authorize(Roles = "Admin, Auditor, Cliente")]
         public async Task<IActionResult> GetUsuario(int id)
         {
             try
@@ -90,6 +97,7 @@ namespace trabajoPracticoProgramacion4.Controllers
 
         
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin, Cliente")]
         public async Task<IActionResult> PutUsuario(int id, [FromBody] UsuarioUpdateDto usuarioDto)
         {
 
@@ -98,9 +106,18 @@ namespace trabajoPracticoProgramacion4.Controllers
                 return BadRequest(ModelState);
             }
 
+            if (User.IsInRole("Cliente") && !User.IsInRole("Admin"))
+            {
+                var userIdFromToken = int.Parse(User.FindFirst("Id_Usuario").Value);
+                if (userIdFromToken != id)
+                {
+                    return Forbid("No tienes permiso para actualizar este usuario.");
+                }
+            }
+
             try
             {
-                await Iusuario.PutUsuario(id, usuarioDto);
+                await Iusuario.PutUsuario(id,usuarioDto.User_Name);
                 return NoContent();
             }
             catch (Exception ex)
@@ -123,6 +140,7 @@ namespace trabajoPracticoProgramacion4.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteUsuario(int id)
         {
             try
@@ -142,27 +160,65 @@ namespace trabajoPracticoProgramacion4.Controllers
             }
         }
         //Listo
-        [HttpPost]
-        public async Task<IActionResult> PostUsuario(UsuarioUpdateDto usuariodto)
+        [HttpPost("create-by-admin")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> PostUsuario([FromBody] RegistroUsuarioDTO usuariodto)
         {
+            if (!usuariodto.Id_Rol.HasValue)
+            {
+                return BadRequest("Para crear un usuario como Administrador, se debe especificar el Rol (Id_Rol).");
+            }
+
             try
             {
-                if (usuariodto == null)
-                    return BadRequest("Complete los campos");
+                await Iusuario.CreateUserByAdminAsync(usuariodto, usuariodto.Id_Rol.Value);
 
-                await Iusuario.PostUsuarios(usuariodto);
-
-                return Ok(new
-                {
-                    Mensaje = "Se dio de alta el usuario",
-
-                });
-
-
+                return Ok(new { Mensaje = "Usuario creado por Administrador correctamente." });
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                
+                if (ex.Message.Contains("ya está registrado") || ex.Message.Contains("email ya está registrado") || ex.Message.Contains("rol no se encontró"))
+                {
+                    return Conflict(ex.Message);
+                }
+                return StatusCode(500, $"Error interno del servidor al crear el usuario: {ex.Message}");
+            }
+        }
+        
+
+        [HttpGet]
+        [Authorize(Roles = "Admin, Auditor")] // Example: Admin and Auditor can see all users
+        public async Task<ActionResult<IEnumerable<UsuarioResponseDto>>> GetUsuariosRoles()
+        {
+            try
+            {
+                var usuarios = await Iusuario.GetTodosUsuarios();
+                return Ok(usuarios);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error interno del servidor al obtener usuarios: {ex.Message}");
+            }
+        }
+
+        [HttpGet("{id}")]
+        [Authorize(Roles = "Admin, Auditor, Cliente")] // Clients can get their own profile
+        public async Task<IActionResult> GetUsuarioIdRoles(int id)
+        {
+            try
+            {
+
+                var usuario = await Iusuario.GetUsuariosPorId(id);
+                return Ok(usuario);
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message.Contains("no encontrado"))
+                {
+                    return NotFound(ex.Message);
+                }
+                return BadRequest($"Error al obtener el usuario: {ex.Message}");
             }
         }
     }

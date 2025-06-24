@@ -32,5 +32,7 @@ public class RegistroUsuarioDTO
     [StringLength(100, ErrorMessage = "El correo electrónico no puede exceder los 100 caracteres.")]
     public string Email { get; set; }
 
+    public int? Id_Rol { get; set; }
+
 
 }

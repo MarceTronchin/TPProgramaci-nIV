@@ -17,6 +17,49 @@ namespace trabajoPracticoProgramacion4.Servicies
             _context = context;
         }
 
+        public async Task CreateUserByAdminAsync(RegistroUsuarioDTO createUserDto, int roleId)
+        {
+
+
+            
+            if (await _context.Usuarios.AnyAsync(u => u.User_Name == createUserDto.User_Name))
+                {
+                    throw new Exception("El nombre de usuario ya está registrado.");
+                }
+
+                
+                if (await _context.Usuarios.AnyAsync(u => u.Email == createUserDto.Email))
+                {
+                    throw new Exception("El email ya está registrado.");
+                }
+
+                
+                var targetRole = await _context.Roles.FirstOrDefaultAsync(r => r.Id_Rol == roleId);
+                if (targetRole == null)
+                {
+                    throw new Exception($"El rol con ID {roleId} no se encontró.");
+                }
+
+                
+                string hashedPassword = BCrypt.Net.BCrypt.HashPassword(createUserDto.Password);
+
+                var newUser = new UserModel
+                {
+                    User_Name = createUserDto.User_Name,
+                    Password = hashedPassword, // Store the hashed password 
+                    Nombre = createUserDto.Nombre,
+                    Apellido = createUserDto.Apellido,
+                    dni = createUserDto.Dni,
+                    Email = createUserDto.Email,
+                    Estado = true, // New users are active by default
+                    Id_Rol = targetRole.Id_Rol // Assign the role specified by Admin 
+                };
+
+                _context.Usuarios.Add(newUser);
+               await _context.SaveChangesAsync();
+            
+        }
+
         public async Task DeleteUsuario(int id)
         {
             var usuario = await _context.Usuarios.FindAsync(id);
@@ -131,8 +174,6 @@ namespace trabajoPracticoProgramacion4.Servicies
             };
         }
 
-        
-
         public async Task PutUsuario(int id, UsuarioUpdateDto usuarioDto)
         {
             var usuarioDto1 = await _context.Usuarios.FindAsync(id);
@@ -177,6 +218,11 @@ namespace trabajoPracticoProgramacion4.Servicies
             // }
 
             //await _context.SaveChangesAsync();
+        }
+
+        public Task PutUsuario(int id, string nombre)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<UsuarioResponseDto> RegisterUserAsync(UsuarioUpdateDto registroDto, string hashedPassword) 
@@ -235,20 +281,37 @@ namespace trabajoPracticoProgramacion4.Servicies
             };
         }
 
-        public Task<UsuarioResponseDto> RegisterUserAsync(UsuarioUpdateDto registroDto)
+        public async Task<UsuarioResponseDto> RegisterUserAsync(RegistroUsuarioDTO createUserDto)
         {
-            throw new NotImplementedException();
-        }
+            var newUser = new UserModel
+            {
+                User_Name = createUserDto.User_Name,
+                Password = createUserDto.Password,
+                Nombre = createUserDto.Nombre,
+                Apellido = createUserDto.Apellido,
+                dni = createUserDto.Dni,
+                Email = createUserDto.Email,
+                Estado = true,
+            };
 
-        Task UsuarioInterfaz.PostUsuarios(UsuarioUpdateDto usuario)
-        {
-            throw new NotImplementedException();
-        }
+            _context.Usuarios.Add(newUser);
+            await _context.SaveChangesAsync();
 
-        Task UsuarioInterfaz.RegisterUserAsync(UsuarioUpdateDto registroDto, string v)
-        {
-            throw new NotImplementedException();
+            // Make sure you are returning a UsuarioResponseDto here
+            return new UsuarioResponseDto
+            {
+                Id_Usuario = newUser.Id_Usuario,
+                User_Name = newUser.User_Name,
+                Nombre = newUser.Nombre,
+                Apellido = newUser.Apellido,
+                Dni = newUser.dni,
+                Email = newUser.Email,
+                Estado = newUser.Estado,
+                Id_Rol = newUser.Id_Rol,
+                //RolNombre = clienteRole.Nombre
+            };
         }
     }
+    
 } 
         
