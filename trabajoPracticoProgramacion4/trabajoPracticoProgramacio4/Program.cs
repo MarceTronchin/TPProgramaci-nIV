@@ -8,10 +8,16 @@ using trabajoPracticoProgramacion4.Servicies;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
 // DATABASE 
 
 builder.Services.AddScoped<UsuarioInterfaz, UsuarioService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<CuponDetalleInterfaz, CuponDetalleService>();
+builder.Services.AddScoped<CuponInterfaz, CuponService>();
+builder.Services.AddScoped<IArticulo, ArticuloService>();
+builder.Services.AddScoped<ICuponCliente, CuponClienteService>();
+builder.Services.AddScoped<ICuponHistorialServices, CuponHistorialService>();
 string connectionString = builder.Configuration.GetConnectionString("conexion");
 
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));

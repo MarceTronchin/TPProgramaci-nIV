@@ -57,7 +57,7 @@ namespace trabajoPracticoProgramacion4.Controllers
 
         // GET: api/Usuario
         // Este endpoint obtiene todos los usuarios.
-        [HttpGet]
+        [HttpGet ("hola")]
         [Authorize(Roles = "Admin, Auditor")]
         public async Task<ActionResult<IEnumerable<UsuarioResponseDto>>> GetUsuarios()
         {
@@ -75,7 +75,7 @@ namespace trabajoPracticoProgramacion4.Controllers
 
         // GET: api/Usuario/5
         // Este endpoint obtiene un usuario por su Id_Usuario. (listo)
-        [HttpGet("{id}")]
+        [HttpGet("id")]
         [Authorize(Roles = "Admin, Auditor, Cliente")]
         public async Task<IActionResult> GetUsuario(int id)
         {
@@ -96,7 +96,7 @@ namespace trabajoPracticoProgramacion4.Controllers
         }
 
         
-        [HttpPut("{id}")]
+        [HttpPut("id")]
         [Authorize(Roles = "Admin, Cliente")]
         public async Task<IActionResult> PutUsuario(int id, [FromBody] UsuarioUpdateDto usuarioDto)
         {
@@ -187,7 +187,7 @@ namespace trabajoPracticoProgramacion4.Controllers
         }
         
 
-        [HttpGet]
+        [HttpGet ("adios")]
         [Authorize(Roles = "Admin, Auditor")] // Example: Admin and Auditor can see all users
         public async Task<ActionResult<IEnumerable<UsuarioResponseDto>>> GetUsuariosRoles()
         {
