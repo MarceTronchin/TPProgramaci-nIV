@@ -50,10 +50,11 @@ public class CuponService : CuponInterfaz
             Descripcion = cuponDTO.Descripcion,
             PorcentajeDTO = cuponDTO.PorcentajeDto ?? 0,
             ImportePromo = cuponDTO.ImportePromo ?? 0,
-            FechaInicio = DateOnly.FromDateTime(cuponDTO.FechaInicio),
-            FechaFin = DateOnly.FromDateTime(cuponDTO.FechaFin),
+            FechaInicio = cuponDTO.FechaInicio,
+            FechaFin = cuponDTO.FechaFin,
             Id_Tipo_Cupon = cuponDTO.Id_Tipo_Cupon,
             Activo = cuponDTO.Activo,
+            NroCupon = NroCuponGenNue,
         };
         _context.Cupones.Add(cupon);
         await _context.SaveChangesAsync();
@@ -61,20 +62,24 @@ public class CuponService : CuponInterfaz
     public async Task PutCupon(int id, DtoCupon cuponDTO)
     {
         var cupon = await _context.Cupones.FindAsync(id);
-        if (cupon != null)
+        try
         {
-            cupon.Nombre = cuponDTO.Nombre;
-            cupon.Descripcion = cuponDTO.Descripcion;
-            cupon.PorcentajeDTO = cuponDTO.PorcentajeDto ?? 0;
-            cupon.ImportePromo = cuponDTO.ImportePromo ?? 0;
-            cupon.FechaInicio = DateOnly.FromDateTime(cuponDTO.FechaInicio);
-            cupon.FechaFin = DateOnly.FromDateTime(cuponDTO.FechaFin);
-            cupon.Id_Tipo_Cupon = cuponDTO.Id_Tipo_Cupon;
-            cupon.Activo = cuponDTO.Activo;
+            if (cupon != null)
+            {
+                cupon.Nombre = cuponDTO.Nombre;
+                cupon.Descripcion = cuponDTO.Descripcion;
+                cupon.PorcentajeDTO = cuponDTO.PorcentajeDto ?? 0;
+                cupon.ImportePromo = cuponDTO.ImportePromo ?? 0;
+                cupon.FechaInicio = cuponDTO.FechaInicio;
+                cupon.FechaFin = cuponDTO.FechaFin;
+                cupon.Id_Tipo_Cupon = cuponDTO.Id_Tipo_Cupon;
+                cupon.Activo = cuponDTO.Activo;
 
-            _context.Cupones.Update(cupon);
-            await _context.SaveChangesAsync();
+                _context.Cupones.Update(cupon);
+                await _context.SaveChangesAsync();
+            }
         }
+        catch (Exception ex) { throw new Exception("Cupon no encontrado."); }
     }
     public async Task DeleteCupon(int id)
     {
@@ -85,18 +90,23 @@ public class CuponService : CuponInterfaz
             await _context.SaveChangesAsync();
         }
     }
-    public async Task<List<CuponDetalle>> GetDetallesPorCupon(string nroCupon)
+    public async Task<List<CuponDetalle>> GetDetallesPorCupon(string NroCupon)
     {
+        var cupon = await _context.Cupones.FirstOrDefaultAsync(c => c.NroCupon == NroCupon);
+        if (cupon == null)
+            return new List<CuponDetalle>();
+
         return await _context.CuponesDetalles
-            .Where(cd => cd.NroCupon == nroCupon)
+            .Where(cd => cd.Id_Cupon == cupon.Id_Cupon)
             .ToListAsync();
     }
     public async Task<List<CuponModel>> GetCuponesActivosYVigentes()
     {
-        var hoy = DateOnly.FromDateTime(DateTime.Now);
+        var hoy = DateTime.Today;
         return await _context.Cupones
-            .Where(c => c.Activo && c.FechaInicio <= hoy && c.FechaFin >= hoy)
+            .Where(c => c.Activo && c.FechaInicio.Date <= hoy && c.FechaFin.Date >= hoy)
             .ToListAsync();
+
     }
 }
 

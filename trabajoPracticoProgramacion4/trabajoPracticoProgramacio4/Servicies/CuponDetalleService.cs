@@ -2,8 +2,11 @@ using Microsoft.EntityFrameworkCore;
 using trabajoPracticoProgramacio4.Models;
 using trabajoPracticoProgramacion4.Context;
 using trabajoPracticoProgramacion4.DTOs;
+using trabajoPracticoProgramacion4.Interfaz;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
-public class CuponDetalleService
+public class CuponDetalleService : CuponDetalleInterfaz
 {
     private readonly AppDbContext _context;
 
@@ -12,38 +15,14 @@ public class CuponDetalleService
         _context = context;
     }
 
-    //Lista todos los detalles de cupones
-    public async Task<List<CuponDetalle>> GetAllDetallesAsync()
-    {
-        return await _context.CuponesDetalles.ToListAsync();
-    }
-
-    //Obtiene un detalle por id de cupón e id de artículo (clave compuesta)
-    public async Task<CuponDetalle?> GetDetalleAsync(int idCupon, int idArticulo)
+    // Obtiene todos los detalles de un cupón (por Id_Cupon)
+    public async Task<List<CuponDetalle>> GetDetallePorId(int Id_Cupon)
     {
         return await _context.CuponesDetalles
-            .FirstOrDefaultAsync(cd => cd.Id_Cupon == idCupon && cd.IdArticulo == idArticulo);
+            .Where(cd => cd.Id_Cupon == Id_Cupon)
+            .ToListAsync();
     }
 
-    //Crea un nuevo detalle de cupón
-    public async Task AddDetalleAsync(DtoCuponDetalle dto)
-    {
-        // Validación
-        if (dto.Cantidad <= 0)
-            throw new Exception("La cantidad debe ser mayor a 0.");
-
-        var detalle = new CuponDetalle
-        {
-            Id_Cupon = dto.Id_Cupon,
-            IdArticulo = dto.IdArticulo,
-            Cantidad = dto.Cantidad
-        };
-
-        _context.CuponesDetalles.Add(detalle);
-        await _context.SaveChangesAsync();
-    }
-
-    //Actualiza un detalle (sólo la cantidad, ya que la PK compuesta no debería cambiar)
     public async Task UpdateDetalleAsync(DtoCuponDetalle dto)
     {
         var detalle = await _context.CuponesDetalles
@@ -57,11 +36,10 @@ public class CuponDetalleService
         await _context.SaveChangesAsync();
     }
 
-    //Elimina un detalle por clave compuesta
-    public async Task DeleteDetalleAsync(int idCupon, int idArticulo)
+    public async Task DeleteDetalleAsync(int Id_Cupon, int IdArticulo)
     {
         var detalle = await _context.CuponesDetalles
-            .FirstOrDefaultAsync(cd => cd.Id_Cupon == idCupon && cd.IdArticulo == idArticulo);
+            .FirstOrDefaultAsync(cd => cd.Id_Cupon == Id_Cupon && cd.IdArticulo == IdArticulo);
 
         if (detalle == null)
             throw new Exception("Detalle de cupón no encontrado.");
@@ -70,3 +48,4 @@ public class CuponDetalleService
         await _context.SaveChangesAsync();
     }
 }
+
