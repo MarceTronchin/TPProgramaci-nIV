@@ -44,13 +44,13 @@ namespace trabajoPracticoProgramacion4.Controllers
             return Ok(detalles);
         }
 
-       /* [HttpGet("activos-vigentes")]
+        [HttpGet("activos-vigentes")]
         public async Task<ActionResult<List<CuponModel>>> GetCuponesActivosYVigentes()
         {
             var cupones = await _cuponService.GetCuponesActivosYVigentes();
             return Ok(cupones);
         }
-       */
+
 
         // POST: api/Cupon
         [HttpPost]
@@ -124,7 +124,7 @@ namespace trabajoPracticoProgramacion4.Controllers
 
 
         [HttpPost("reclamar")]
-        public async Task<IActionResult> ReclamarCupon([FromBody]ReclamarCuponDto reclamaCupon)
+        public async Task<IActionResult> ReclamarCupon([FromBody] ReclamarCuponDto reclamaCupon)
         {
             try
             {

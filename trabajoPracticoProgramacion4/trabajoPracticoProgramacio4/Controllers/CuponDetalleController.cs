@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using trabajoPracticoProgramacio4.Models;
 using trabajoPracticoProgramacion4.DTOs;
 using trabajoPracticoProgramacion4.Interfaz;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace trabajoPracticoProgramacion4.Controllers
 {
@@ -10,32 +12,32 @@ namespace trabajoPracticoProgramacion4.Controllers
     [Route("api/[controller]")]
     public class CuponDetalleController : ControllerBase
     {
-        private readonly CuponInterfaz _cuponService;
+        private readonly CuponDetalleInterfaz _cuponDetalleService;
 
-        public CuponDetalleController(CuponInterfaz cuponService)
+        public CuponDetalleController(CuponDetalleInterfaz cuponDetalleService)
         {
-            _cuponService = cuponService;
+            _cuponDetalleService = cuponDetalleService;
         }
 
-        // GET: api/Cupon
-        [HttpGet("{nroCupon:int}/{idArticulo:int}")]
-        public async Task<ActionResult<CuponDetalle>> GetDetalleAsync(string nroCupon, int idArticulo)
+
+        // GET: api/CuponDetalle/5
+        [HttpGet("{Id_Cupon}")]
+        public async Task<ActionResult<List<CuponDetalle>>> GetDetallePorId(int Id_Cupon)
         {
-            var detalle = await _cuponService.GetDetalleAsync(nroCupon, idArticulo);
-            if (detalle == null)
-                return NotFound(new { error = "Detalle de cupón no encontrado." });
-            return Ok(detalle);
+            var detalles = await _cuponDetalleService.GetDetallePorId(Id_Cupon);
+            return Ok(detalles);
         }
 
-        // POST: api/Cupon
-        [HttpPost]
+
+        // PUT: api/CuponDetalle
+        [HttpPut]
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult> PostCupon([FromBody] DtoCupon cuponDto)
+        public async Task<ActionResult> PutDetalle([FromBody] DtoCuponDetalle dto)
         {
             try
             {
-                await _cuponService.PostCupon(cuponDto);
-                return Ok(new { message = "Cupón creado correctamente" });
+                await _cuponDetalleService.UpdateDetalleAsync(dto);
+                return Ok(new { message = "Detalle actualizado correctamente" });
             }
             catch (Exception ex)
             {
@@ -43,31 +45,15 @@ namespace trabajoPracticoProgramacion4.Controllers
             }
         }
 
-        // PUT: api/Cupon
-        [HttpPut("{idArticulo:int}")]
+        // DELETE: api/CuponDetalle/5/6
+        [HttpDelete("{Id_Cupon}/{IdArticulo}")]
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult> PutCupon(int idArticulo, [FromBody] DtoCupon cuponDto)
+        public async Task<ActionResult> DeleteDetalleAsync(int Id_Cupon, int IdArticulo)
         {
             try
             {
-                await _cuponService.PutCupon(idArticulo, cuponDto);
-                return Ok(new { message = "Cupón actualizado correctamente" });
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new { error = ex.Message });
-            }
-        }
-
-        // DELETE: api/Cupon
-        [HttpDelete("{idArticulo:int}")]
-        [Authorize(Roles = "Admin")]
-        public async Task<ActionResult> DeleteCupon(int idArticulo)
-        {
-            try
-            {
-                await _cuponService.DeleteCupon(idArticulo);
-                return Ok(new { message = "Cupón eliminado correctamente" });
+                await _cuponDetalleService.DeleteDetalleAsync(Id_Cupon, IdArticulo);
+                return Ok(new { message = "Detalle eliminado correctamente" });
             }
             catch (Exception ex)
             {
