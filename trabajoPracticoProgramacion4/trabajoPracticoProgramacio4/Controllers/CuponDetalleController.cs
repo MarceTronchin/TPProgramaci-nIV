@@ -21,7 +21,7 @@ namespace trabajoPracticoProgramacion4.Controllers
         [HttpGet("{nroCupon:int}/{idArticulo:int}")]
         public async Task<ActionResult<CuponDetalle>> Get(string nroCupon, int idArticulo)
         {
-            var detalle = await _service.GetDetalleAsync(nroCupon, idArticulo);
+            var detalle = await _cuponService.GetDetalleAsync(nroCupon, idArticulo);
             if (detalle == null)
                 return NotFound(new { error = "Detalle de cupón no encontrado." });
             return Ok(detalle);
@@ -44,13 +44,13 @@ namespace trabajoPracticoProgramacion4.Controllers
         }
 
         // PUT: api/Cupon
-        [HttpPut("{idCupon:int}/{idArticulo:int}")]
+        [HttpPut("{string nroCupon}/{idArticulo:int}")]
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult> PutCupon(int idCupon, int idArticulo, [FromBody] DtoCupon cuponDto)
+        public async Task<ActionResult> PutCupon(string nroCupon, int idArticulo, [FromBody] DtoCupon cuponDto)
         {
             try
             {
-                await _cuponService.PutCupon(int idCupon, int idArticulo, cuponDto);
+                await _cuponService.PutCupon(string nroCupon, int idArticulo, cuponDto);
                 return Ok(new { message = "Cupón actualizado correctamente" });
             }
             catch (Exception ex)
@@ -62,11 +62,11 @@ namespace trabajoPracticoProgramacion4.Controllers
         // DELETE: api/Cupon
         [HttpDelete("{idCupon:int}/{idArticulo:int}")]
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult> DeleteCupon(int idCupon, int idArticulo)
+        public async Task<ActionResult> DeleteCupon(string nroCupon, int idArticulo)
         {
             try
             {
-                await _cuponService.DeleteCupon(idCupon, idArticulo);
+                await _cuponService.DeleteCupon(string nroCupon, idArticulo);
                 return Ok(new { message = "Cupón eliminado correctamente" });
             }
             catch (Exception ex)
