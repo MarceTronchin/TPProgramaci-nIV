@@ -85,5 +85,18 @@ public class CuponService : CuponInterfaz
             await _context.SaveChangesAsync();
         }
     }
+    public async Task<List<CuponDetalle>> GetDetallesPorCupon(string nroCupon)
+    {
+        return await _context.CuponesDetalles
+            .Where(cd => cd.NroCupon == nroCupon)
+            .ToListAsync();
+    }
+    public async Task<List<CuponModel>> GetCuponesActivosYVigentes()
+    {
+        var hoy = DateOnly.FromDateTime(DateTime.Now);
+        return await _context.Cupones
+            .Where(c => c.Activo && c.FechaInicio <= hoy && c.FechaFin >= hoy)
+            .ToListAsync();
+    }
 }
 

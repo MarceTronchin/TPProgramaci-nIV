@@ -35,6 +35,21 @@ namespace trabajoPracticoProgramacion4.Controllers
             return Ok(cupon);
         }
 
+        [HttpGet("{nroCupon}/detalles")]
+        public async Task<ActionResult<List<CuponDetalle>>> GetDetallesPorCupon(string nroCupon)
+        {
+            var detalles = await _cuponService.GetDetallesPorCupon(nroCupon);
+            return Ok(detalles);
+        }
+
+        [HttpGet("activos-vigentes")]
+        public async Task<ActionResult<List<CuponModel>>> GetCuponesActivosYVigentes()
+        {
+            var cupones = await _cuponService.GetCuponesActivosYVigentes();
+            return Ok(cupones);
+        }
+
+
         // POST: api/Cupon
         [HttpPost]
         [Authorize(Roles = "Admin")]
