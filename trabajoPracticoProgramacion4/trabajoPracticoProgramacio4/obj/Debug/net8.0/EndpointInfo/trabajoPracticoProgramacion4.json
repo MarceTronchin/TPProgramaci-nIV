@@ -187,26 +187,62 @@
         }
       }
     },
-    "/api/Auth": {
+    "/api/Cupon": {
+      "get": {
+        "tags": [
+          "Cupon"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CuponModel"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CuponModel"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CuponModel"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
       "post": {
         "tags": [
-          "Auth"
+          "Cupon"
         ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/LoginModel"
+                "$ref": "#/components/schemas/DtoCupon"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/LoginModel"
+                "$ref": "#/components/schemas/DtoCupon"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/LoginModel"
+                "$ref": "#/components/schemas/DtoCupon"
               }
             }
           }
@@ -218,30 +254,100 @@
         }
       }
     },
-    "/api/Auth/register": {
-      "post": {
+    "/api/Cupon/{id}": {
+      "get": {
         "tags": [
-          "Auth"
+          "Cupon"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CuponModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CuponModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CuponModel"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Cupon"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
         ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/RegistroUsuarioDTO"
+                "$ref": "#/components/schemas/DtoCupon"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/RegistroUsuarioDTO"
+                "$ref": "#/components/schemas/DtoCupon"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/RegistroUsuarioDTO"
+                "$ref": "#/components/schemas/DtoCupon"
               }
             }
           }
         },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Cupon"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -258,17 +364,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/DtoUsuario"
+                "$ref": "#/components/schemas/UsuarioUpdateDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/DtoUsuario"
+                "$ref": "#/components/schemas/UsuarioUpdateDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/DtoUsuario"
+                "$ref": "#/components/schemas/UsuarioUpdateDto"
               }
             }
           }
@@ -325,17 +431,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/DtoUsuario"
+                "$ref": "#/components/schemas/UsuarioUpdateDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/DtoUsuario"
+                "$ref": "#/components/schemas/UsuarioUpdateDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/DtoUsuario"
+                "$ref": "#/components/schemas/UsuarioUpdateDto"
               }
             }
           }
@@ -388,17 +494,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/DtoUsuario"
+                "$ref": "#/components/schemas/UsuarioUpdateDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/DtoUsuario"
+                "$ref": "#/components/schemas/UsuarioUpdateDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/DtoUsuario"
+                "$ref": "#/components/schemas/UsuarioUpdateDto"
               }
             }
           }
@@ -489,50 +595,167 @@
         },
         "additionalProperties": false
       },
-      "DtoUsuario": {
+      "CuponClienteModel": {
+        "type": "object",
+        "properties": {
+          "id_Cupon": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nroCupon": {
+            "type": "string",
+            "nullable": true
+          },
+          "id_Usuario": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "fechaAsignado": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "cupon": {
+            "$ref": "#/components/schemas/CuponModel"
+          },
+          "usuario": {
+            "$ref": "#/components/schemas/UserModel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CuponDetalle": {
+        "type": "object",
+        "properties": {
+          "id_Cupon": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idArticulo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "cantidad": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "cupon": {
+            "$ref": "#/components/schemas/CuponModel"
+          },
+          "articulo": {
+            "$ref": "#/components/schemas/ArticuloModel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CuponModel": {
+        "type": "object",
+        "properties": {
+          "id_Cupon": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nroCupon": {
+            "type": "string",
+            "nullable": true
+          },
+          "nombre": {
+            "type": "string",
+            "nullable": true
+          },
+          "descripcion": {
+            "type": "string",
+            "nullable": true
+          },
+          "porcentajeDTO": {
+            "type": "number",
+            "format": "double"
+          },
+          "importePromo": {
+            "type": "number",
+            "format": "double"
+          },
+          "fechaInicio": {
+            "type": "string",
+            "format": "date"
+          },
+          "fechaFin": {
+            "type": "string",
+            "format": "date"
+          },
+          "id_Tipo_Cupon": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "activo": {
+            "type": "boolean"
+          },
+          "tipoCupon": {
+            "$ref": "#/components/schemas/TipoCuponModel"
+          },
+          "cuponesClientes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CuponClienteModel"
+            },
+            "nullable": true
+          },
+          "cuponesDetalles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CuponDetalle"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DtoCupon": {
         "required": [
-          "apellido",
-          "dni",
-          "email",
-          "estado",
-          "id_Rol",
-          "nombre",
-          "password",
-          "user_Name"
+          "descripcion",
+          "fechaInicio",
+          "nombre"
         ],
         "type": "object",
         "properties": {
-          "user_Name": {
-            "minLength": 1,
-            "type": "string"
+          "nroCupon": {
+            "type": "string",
+            "nullable": true
           },
-          "password": {
-            "minLength": 1,
-            "type": "string"
+          "id_Tipo_Cupon": {
+            "type": "integer",
+            "format": "int32"
           },
           "nombre": {
             "minLength": 1,
             "type": "string"
           },
-          "apellido": {
+          "descripcion": {
             "minLength": 1,
             "type": "string"
           },
-          "dni": {
-            "minLength": 1,
-            "type": "string"
+          "porcentajeDto": {
+            "maximum": 100,
+            "minimum": 0,01,
+            "type": "number",
+            "format": "double",
+            "nullable": true
           },
-          "email": {
-            "minLength": 1,
+          "importePromo": {
+            "minimum": 0,01,
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "fechaInicio": {
             "type": "string",
-            "format": "email"
+            "format": "date"
           },
-          "estado": {
+          "fechaFin": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "activo": {
             "type": "boolean"
-          },
-          "id_Rol": {
-            "type": "integer",
-            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -555,66 +778,81 @@
         },
         "additionalProperties": false
       },
-      "LoginModel": {
+      "RolModel": {
         "type": "object",
         "properties": {
-          "user": {
-            "type": "string",
-            "nullable": true
+          "id_Rol": {
+            "type": "integer",
+            "format": "int32"
           },
-          "password": {
+          "nombre": {
             "type": "string",
             "nullable": true
           }
         },
         "additionalProperties": false
       },
-      "RegistroUsuarioDTO": {
-        "required": [
-          "apellido",
-          "confirmPassword",
-          "dni",
-          "email",
-          "nombre",
-          "password",
-          "user_Name"
-        ],
+      "TipoCuponModel": {
         "type": "object",
         "properties": {
-          "user_Name": {
-            "maxLength": 50,
-            "minLength": 3,
-            "type": "string"
-          },
-          "password": {
-            "maxLength": 100,
-            "minLength": 6,
-            "type": "string"
-          },
-          "confirmPassword": {
-            "minLength": 1,
-            "type": "string"
+          "id": {
+            "type": "integer",
+            "format": "int32"
           },
           "nombre": {
-            "maxLength": 50,
-            "minLength": 0,
-            "type": "string"
+            "type": "string",
+            "nullable": true
+          },
+          "cupones": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CuponModel"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserModel": {
+        "type": "object",
+        "properties": {
+          "id_Usuario": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "user_Name": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          },
+          "nombre": {
+            "type": "string",
+            "nullable": true
           },
           "apellido": {
-            "maxLength": 50,
-            "minLength": 0,
-            "type": "string"
+            "type": "string",
+            "nullable": true
           },
           "dni": {
-            "maxLength": 10,
-            "minLength": 0,
-            "type": "string"
+            "type": "string",
+            "nullable": true
           },
           "email": {
-            "maxLength": 100,
-            "minLength": 0,
             "type": "string",
-            "format": "email"
+            "nullable": true
+          },
+          "estado": {
+            "type": "boolean"
+          },
+          "id_Rol": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "rol": {
+            "$ref": "#/components/schemas/RolModel"
           }
         },
         "additionalProperties": false
@@ -656,6 +894,49 @@
           "rolNombre": {
             "type": "string",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UsuarioUpdateDto": {
+        "required": [
+          "apellido",
+          "dni",
+          "email",
+          "estado",
+          "id_Rol",
+          "nombre",
+          "user_Name"
+        ],
+        "type": "object",
+        "properties": {
+          "user_Name": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "nombre": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "apellido": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "dni": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "email": {
+            "minLength": 1,
+            "type": "string",
+            "format": "email"
+          },
+          "estado": {
+            "type": "boolean"
+          },
+          "id_Rol": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
