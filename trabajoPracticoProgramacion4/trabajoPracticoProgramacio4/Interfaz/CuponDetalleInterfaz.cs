@@ -12,7 +12,7 @@ namespace trabajoPracticoProgramacion4.Interfaz
 		Task AddDetalleAsync(DtoCuponDetalle dto);
 		Task UpdateDetalleAsync(DtoCuponDetalle dto);
 		Task DeleteDetalleAsync(int id_Cupon, int idArticulo);
-		Task<List<CuponModel>> GetCuponesActivosYVigentes();
+
 	}
 }
 

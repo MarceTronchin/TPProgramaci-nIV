@@ -16,6 +16,7 @@ namespace trabajoPracticoProgramacion4.Interfaz
 
         Task<List<CuponDetalle>> GetDetallesPorCupon(string nroCupon);
 
+        Task<List<CuponModel>> GetCuponesActivosYVigentes();
     }
 }
 
