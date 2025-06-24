@@ -12,11 +12,12 @@ namespace trabajoPracticoProgramacion4.Controllers
     {
         private readonly CuponInterfaz _cuponService;
         private readonly ICuponCliente _cuponClienteService;
-
-        public CuponController(CuponInterfaz cuponService, ICuponCliente cuponClienteService)
+        private readonly IEmailService _emailService;
+        public CuponController(CuponInterfaz cuponService, ICuponCliente cuponClienteService, IEmailService email)
         {
             _cuponService = cuponService;
             _cuponClienteService = cuponClienteService;
+            _emailService = email;
         }
 
         // GET: api/Cupon
@@ -129,7 +130,15 @@ namespace trabajoPracticoProgramacion4.Controllers
             try
             {
                 await _cuponClienteService.ReclamarCupon(reclamaCupon.IdUsuario, reclamaCupon.NroCupon);
-                return Ok(new { message = "Cupón reclamado correctamente" });
+
+                // Simulacion envío de email
+                var destinatario = "cliente@example.com";
+                var asunto = "Reclamo de Cupón";
+                var cuerpo = $"Has reclamado el cupón {reclamaCupon.NroCupon}. ¡Aprovechalo antes de su vencimiento!";
+
+                _emailService.EnviarCorreoSimulado(destinatario, asunto, cuerpo);
+
+                return Ok(new { message = "Cupón reclamado correctamente (correo enviado)" });
             }
             catch (Exception ex)
             {
