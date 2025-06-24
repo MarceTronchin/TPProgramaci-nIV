@@ -1,118 +1,79 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
 using trabajoPracticoProgramacion4.Models;
-using trabajoPracticoProgramacion4.Context;
 using trabajoPracticoProgramacion4.Interfaz;
 using trabajoPracticoProgramacion4.DTOs;
 
-
-[ApiController]
-[Route("api/[controller]")]
-public class ArticuloController : ControllerBase
+namespace trabajoPracticoProgramacion4.Controllers
 {
-    private readonly AppDbContext _context;
-    private readonly IArticulo _iArticulo;
-
-    public ArticuloController(AppDbContext context, IArticulo iArticulo)
+    [ApiController]
+    [Route("api/[controller]")]
+    public class ArticuloController : ControllerBase
     {
-        _context = context;
-        _iArticulo = iArticulo;
-    }
+        private readonly IArticulo _iArticulo;
 
-    //POST: api/Articulo 
-    // Este endpoint CARGA un nuevo artículo -NO CLIENTE!!
-    [HttpPost]
-    [Authorize(Roles = "Admin")]
-    public async Task<IActionResult> PostArticulo(ArticuloDTO articuloDTO)
-    {
-        if (!ModelState.IsValid)
-            return BadRequest(ModelState);
-        var articulo = new ArticuloModel
+        public ArticuloController(IArticulo iArticulo)
         {
-            NombreArticulo = articuloDTO.Nombre,
-            DescripcionArticulo = articuloDTO.Descripcion,
-            Precio = articuloDTO.Precio,
-        }; 
-
-        _context.Articulos.Add(articulo);
-        await _context.SaveChangesAsync();
-
-        return Ok (new {mensaje = "Artículo creado correctamente.", articulo});
+            _iArticulo = iArticulo;
         }
-        
 
-
-    // GET: api/Articulo
-    // Este endpoint obtiene TODOS los artículos
-    [HttpGet]
-    public async Task<ActionResult<IEnumerable<ArticuloModel>>> GetArticulos()
-    {
-        return await _context.Articulos.ToListAsync();
-    }
-
-
-    // GET: api/Articulo
-    // Este endpoint obtiene UN ARTICULO POR ID
-    [HttpGet("{id}")]
-    public async Task<IActionResult> GetArticulo(int id)
-    {
-        try
+        // POST: api/Articulo
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> PostArticulo([FromBody] ArticuloDTO articuloDTO)
         {
-            ArticuloModel articulo = await _iArticulo.GetArticuloPorID(id);
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            await _iArticulo.PostArticulo(articuloDTO);
+
+            return Ok(new { mensaje = "Artículo creado correctamente." });
+        }
+
+        // GET: api/Articulo
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<ArticuloModel>>> GetArticulos()
+        {
+            var articulos = await _iArticulo.GetAllArticulos();
+            return Ok(articulos);
+        }
+
+        // GET: api/Articulo/{id}
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetArticulo(int id)
+        {
+            var articulo = await _iArticulo.GetArticuloPorID(id);
+            if (articulo == null)
+                return NotFound("Artículo no encontrado.");
+
             return Ok(articulo);
         }
-        catch (Exception ex)
+
+        // PUT: api/Articulo/{id}
+        [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> PutArticulo(int id, [FromBody] ArticuloDTO articuloDTO)
         {
-            return BadRequest(ex.Message);
-        }
-    }
+            var articuloExistente = await _iArticulo.GetArticuloPorID(id);
+            if (articuloExistente == null)
+                return NotFound("No existe un artículo con ese ID.");
 
+            await _iArticulo.PutArticulo(id, articuloDTO);
 
-
-    // PUT: api/Articulo
-    // Este endpoint actualiza un articulo existente
-    // Recibe un DtoArticulo para la actualización
-    [HttpPut("{id}")]
-    [Authorize(Roles = "Admin")]
-    public async Task<IActionResult> PutArticulo(int id, ArticuloDTO articuloDTO)
-    {
-
-        var articuloYaExiste = await _context.Articulos.FindAsync(id);
-
-        if (articuloYaExiste == null)
-        {
-            return NotFound("No existe un artículo cargado con ese ID.");
+            return Ok(new { mensaje = "Artículo actualizado correctamente." });
         }
 
-        articuloYaExiste.NombreArticulo = articuloDTO.Nombre;
-        articuloYaExiste.DescripcionArticulo = articuloDTO.Descripcion;
-        articuloYaExiste.Precio = articuloDTO.Precio;
-     
-
-        await _context.SaveChangesAsync();
-        return Ok(new { mensaje = "Artículo actualizado correctamente.", articuloYaExiste });
-    }
-
-
-    // DELETE: api/Articulo/{id}
-    // Este endpoint ELIMINA un articulo por su ID
-    // solo los ADMIN pueden
-    [HttpDelete("{id}")]
-    [Authorize(Roles = "Admin")]
-    public async Task<IActionResult> DeleteArticulo(int id)
-    {
-        var articulo = await _context.Articulos.FindAsync(id);
-        if (articulo == null)
+        // DELETE: api/Articulo/{id}
+        [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> DeleteArticulo(int id)
         {
-            return NotFound("Articulo no encontrado para eliminar.");
+            var articulo = await _iArticulo.GetArticuloPorID(id);
+            if (articulo == null)
+                return NotFound("Artículo no encontrado para eliminar.");
+
+            await _iArticulo.DeleteArticulo(id);
+            return Ok(new { mensaje = "Artículo eliminado correctamente." });
         }
-
-        _context.Articulos.Remove(articulo);
-        await _context.SaveChangesAsync();
-        return Ok(new { mensaje = "Artículo eliminado correctamente." });
-
-        return NoContent();
     }
-
 }

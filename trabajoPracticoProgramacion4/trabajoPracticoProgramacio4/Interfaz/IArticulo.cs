@@ -14,6 +14,6 @@ namespace trabajoPracticoProgramacion4.Interfaz
 
         Task PutArticulo(int id, ArticuloDTO articuloDTO);
 
-        Task DeleteArticuloo(int id);
+        Task DeleteArticulo(int id);
     }
 }
