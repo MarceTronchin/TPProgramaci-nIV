@@ -8,17 +8,17 @@ namespace trabajoPracticoProgramacion4.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class CuponController : ControllerBase
+    public class CuponDetalleController : ControllerBase
     {
         private readonly CuponInterfaz _cuponService;
 
-        public CuponController(CuponInterfaz cuponService)
+        public CuponDetalleController(CuponInterfaz cuponService)
         {
             _cuponService = cuponService;
         }
 
         // GET: api/Cupon
-        [HttpGet("{nroCupon}/{idArticulo:int}")]
+        [HttpGet("{nroCupon:int}/{idArticulo:int}")]
         public async Task<ActionResult<CuponDetalle>> Get(string nroCupon, int idArticulo)
         {
             var detalle = await _service.GetDetalleAsync(nroCupon, idArticulo);
@@ -44,13 +44,13 @@ namespace trabajoPracticoProgramacion4.Controllers
         }
 
         // PUT: api/Cupon
-        [HttpPut("{id}")]
+        [HttpPut("{idCupon:int}/{idArticulo:int}")]
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult> PutCupon(int id, [FromBody] DtoCupon cuponDto)
+        public async Task<ActionResult> PutCupon(int idCupon, int idArticulo, [FromBody] DtoCupon cuponDto)
         {
             try
             {
-                await _cuponService.PutCupon(id, cuponDto);
+                await _cuponService.PutCupon(int idCupon, int idArticulo, cuponDto);
                 return Ok(new { message = "Cupón actualizado correctamente" });
             }
             catch (Exception ex)
@@ -60,13 +60,13 @@ namespace trabajoPracticoProgramacion4.Controllers
         }
 
         // DELETE: api/Cupon
-        [HttpDelete("{id}")]
+        [HttpDelete("{idCupon:int}/{idArticulo:int}")]
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult> DeleteCupon(int id)
+        public async Task<ActionResult> DeleteCupon(int idCupon, int idArticulo)
         {
             try
             {
-                await _cuponService.DeleteCupon(id);
+                await _cuponService.DeleteCupon(idCupon, idArticulo);
                 return Ok(new { message = "Cupón eliminado correctamente" });
             }
             catch (Exception ex)
