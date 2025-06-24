@@ -18,6 +18,8 @@ builder.Services.AddScoped<CuponInterfaz, CuponService>();
 builder.Services.AddScoped<IArticulo, ArticuloService>();
 builder.Services.AddScoped<ICuponCliente, CuponClienteService>();
 builder.Services.AddScoped<ICuponHistorialServices, CuponHistorialService>();
+builder.Services.AddScoped<IReporteService, ReporteService>();
+
 string connectionString = builder.Configuration.GetConnectionString("conexion");
 
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
