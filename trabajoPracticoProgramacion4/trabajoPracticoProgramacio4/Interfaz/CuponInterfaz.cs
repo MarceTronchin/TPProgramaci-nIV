@@ -14,7 +14,7 @@ namespace trabajoPracticoProgramacion4.Interfaz
 
         Task DeleteCupon(int id);
 
-        Task<List<CuponDetalle>> GetDetallesPorCupon(string nroCupon);
+        Task<List<CuponDetalle>> GetDetallesPorCupon(string NroCupon);
 
         Task<List<CuponModel>> GetCuponesActivosYVigentes();
     }

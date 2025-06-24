@@ -5,14 +5,14 @@ using System.Threading.Tasks;
 
 namespace trabajoPracticoProgramacion4.Interfaz
 {
-	public interface CuponDetalleInterfaz
-	{
-		Task<List<CuponDetalle>> GetAllDetallesAsync();
-		Task<CuponDetalle?> GetDetalleAsync(int id_Cupon, int idArticulo);
-		Task AddDetalleAsync(DtoCuponDetalle dto);
-		Task UpdateDetalleAsync(DtoCuponDetalle dto);
-		Task DeleteDetalleAsync(int id_Cupon, int idArticulo);
+    public interface CuponDetalleInterfaz
+    {
+        Task<List<CuponDetalle>> GetDetallePorId(int Id_Cupon); // todos los detalles de un cupón
 
-	}
+        Task UpdateDetalleAsync(DtoCuponDetalle dto);
+
+        Task DeleteDetalleAsync(int Id_Cupon, int IdArticulo);
+    }
 }
+
 
