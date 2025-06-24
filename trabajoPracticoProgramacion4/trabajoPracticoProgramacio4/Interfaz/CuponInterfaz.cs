@@ -13,6 +13,9 @@ namespace trabajoPracticoProgramacion4.Interfaz
         Task PutCupon(int id, DtoCupon cuponDto);
 
         Task DeleteCupon(int id);
+
+        Task<List<CuponDetalle>> GetDetallesPorCupon(string nroCupon);
+
     }
 }
 
